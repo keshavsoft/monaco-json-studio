@@ -12,27 +12,27 @@ function printHelp() {
 ========================================================================
 
 Usage:
-  npx @keshavsoft/monaco-json-studio <panes> [targetDir] [options]
+  npx @keshavsoft / monaco - json - studio < panes > [targetDir][options]
 
 Arguments:
-  <panes>         Required. Number of Monaco editor panes (1, 2, or 3):
-                    1  → Single Full-Width Monaco Studio (100% width)
-                    2  → Dual Split Monaco Studio (50/50 split)
-                    3  → Triple Split Monaco Studio (33/33/33 split)
+        <panes>         Required. Number of Monaco editor panes (1, 2, or 3):
+            1  → Single Full-Width Monaco Studio (100% width)
+            2  → Dual Split Monaco Studio (50/50 split)
+            3  → Triple Split Monaco Studio (33/33/33 split)
 
-  [targetDir]     Optional. Destination directory path:
-                    - Pass a folder name (e.g., ./my-studio)
-                    - Pass '.' to scaffold directly into current folder
-                    (Default: ./monaco-studio)
+            [targetDir]     Optional. Destination directory path:
+            - Pass a folder name (e.g., ./my-studio)
+            - Pass '.' to scaffold directly into current folder
+            (Default: ./monaco-studio)
 
-Options:
-  --title=<title> Custom branding title for studio header
-  -h, --help      Display this guide
+            Options:
+                    --title=<title> Custom branding title for studio header
+                        -h, --help      Display this guide
 
-Examples:
-  npx @keshavsoft/monaco-json-studio 1 ./single-viewer
-  npx @keshavsoft/monaco-json-studio 2 ./dual-studio --title="API Data Studio"
-  npx @keshavsoft/monaco-json-studio 3 .
+                        Examples:
+                        npx @keshavsoft/monaco-json-studio 1 ./single-viewer
+                        npx @keshavsoft/monaco-json-studio 2 ./dual-studio --title="API Data Studio"
+                        npx @keshavsoft/monaco-json-studio 3 .
 ========================================================================
 `);
 }
