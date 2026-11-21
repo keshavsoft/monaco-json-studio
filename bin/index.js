@@ -7,8 +7,8 @@ const args = process.argv.slice(2);
 function printHelp() {
     console.log(`
 ========================================================================
-  🚀 @keshavsoft/monaco-json-studio (v2)
-  Zero-dependency Physical Static Monaco Studio Generator
+  🚀 @keshavsoft/monaco-json-studio (v3)
+  Zero-dependency Physical Static Monaco Studio Generator (Spec-Driven)
 ========================================================================
 
 Usage:
@@ -75,7 +75,7 @@ if (panes === null || isNaN(panes) || panes < 1 || panes > 3) {
 const resolvedTarget = path.resolve(process.cwd(), targetDir);
 
 console.log(`\n======================================================`);
-console.log(`  🚀 @keshavsoft/monaco-json-studio (v2)`);
+console.log(`  🚀 @keshavsoft/monaco-json-studio (v3)`);
 console.log(`  Mode: ${panes} Pane${panes > 1 ? 's' : ''} (100% Static HTML)`);
 console.log(`  Target: ${resolvedTarget}`);
 console.log(`======================================================\n`);

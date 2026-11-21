@@ -24,7 +24,7 @@
             },
             {
               "tagName": "span",
-              "textContent": "JSON-Driven Assembled Studio"
+              "textContent": "JSON-Driven Monaco Studio"
             }
           ]
         },
@@ -37,7 +37,7 @@
           "attributes": {
             "id": "layoutMeta"
           },
-          "textContent": "2 Panes Assembled"
+          "textContent": "3 Panes Active"
         }
       ]
     },

@@ -13,78 +13,27 @@
         {
           "tagName": "a",
           "attributes": {
-            "href": "../../index.html",
+            "href": "#",
             "class": "brand-link",
-            "title": "Back to Docs"
+            "title": "Monaco Studio"
           },
           "children": [
             {
               "tagName": "i",
               "attributes": {
-                "class": "bi bi-boxes brand-icon"
+                "class": "bi bi-cpu-fill brand-icon"
               }
             },
             {
               "tagName": "span",
-              "textContent": "JSON-Driven Monaco Assembler"
+              "textContent": "Monaco Studio"
             },
             {
               "tagName": "span",
               "attributes": {
                 "class": "version-pill"
               },
-              "textContent": "v1"
-            }
-          ]
-        },
-        {
-          "tagName": "div",
-          "attributes": {
-            "class": "header-divider"
-          }
-        },
-        {
-          "tagName": "div",
-          "attributes": {
-            "class": "layout-switcher"
-          },
-          "children": [
-            {
-              "tagName": "span",
-              "attributes": {
-                "class": "layout-switcher-label"
-              },
-              "textContent": "Panes:"
-            },
-            {
-              "tagName": "button",
-              "attributes": {
-                "type": "button",
-                "class": "btn-layout-mode",
-                "data-panes": "1",
-                "title": "Single Pane (100%)"
-              },
-              "textContent": "1"
-            },
-            {
-              "tagName": "button",
-              "attributes": {
-                "type": "button",
-                "class": "btn-layout-mode active",
-                "data-panes": "2",
-                "title": "Double Pane (50/50)"
-              },
-              "textContent": "2"
-            },
-            {
-              "tagName": "button",
-              "attributes": {
-                "type": "button",
-                "class": "btn-layout-mode",
-                "data-panes": "3",
-                "title": "Triple Pane (33/33/33)"
-              },
-              "textContent": "3"
+              "textContent": "v2"
             }
           ]
         }
@@ -97,31 +46,10 @@
       },
       "children": [
         {
-          "tagName": "button",
-          "attributes": {
-            "id": "btnExportProject",
-            "type": "button",
-            "class": "btn-export",
-            "title": "Export Physical Static HTML & Project Files for Clients"
-          },
-          "children": [
-            {
-              "tagName": "i",
-              "attributes": {
-                "class": "bi bi-download"
-              }
-            },
-            {
-              "tagName": "span",
-              "textContent": "Export Physical Project"
-            }
-          ]
-        },
-        {
           "tagName": "span",
           "attributes": {
             "id": "statusPill",
-            "class": "status-pill success hidden"
+            "class": "status-pill success"
           },
           "children": [
             {
@@ -135,7 +63,7 @@
               "attributes": {
                 "id": "statusText"
               },
-              "textContent": "Assembled ✓"
+              "textContent": "Ready ✓"
             }
           ]
         },
@@ -146,22 +74,20 @@
           }
         },
         {
-          "tagName": "a",
+          "tagName": "span",
           "attributes": {
-            "href": "../../index.html",
-            "class": "docs-link",
-            "title": "Documentation Hub"
+            "class": "pane-file-pill"
           },
           "children": [
             {
               "tagName": "i",
               "attributes": {
-                "class": "bi bi-arrow-left"
+                "class": "bi bi-layout-split"
               }
             },
             {
               "tagName": "span",
-              "textContent": "Docs"
+              "textContent": "3 Panes Static Layout"
             }
           ]
         }
