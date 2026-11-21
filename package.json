@@ -1,6 +1,6 @@
 {
   "name": "@keshavsoft/monaco-json-studio",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "description": "Zero-dependency physical and static Monaco JSON Studio scaffold generator and specification assembler.",
   "publishConfig": {
     "access": "public"
