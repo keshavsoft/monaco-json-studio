@@ -1,0 +1,51 @@
+{
+  "name": "@keshavsoft/monaco-json-studio",
+  "version": "1.0.0",
+  "description": "Zero-dependency physical and static Monaco JSON Studio scaffold generator and specification assembler.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keshavsoft/monaco-json-studio.git"
+  },
+  "homepage": "https://keshavsoft.github.io/monaco-json-studio/",
+  "type": "module",
+  "main": "src/index.js",
+  "module": "./src/index.js",
+  "bin": {
+    "monaco-json-studio": "./bin/index.js",
+    "create-monaco-studio": "./bin/index.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    },
+    "./v1": "./src/v1/index.js",
+    "./v2": "./src/v2/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "bin",
+    "assets",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node bin/index.js 2 ./test-output"
+  },
+  "keywords": [
+    "monaco",
+    "monaco-editor",
+    "json-visualizer",
+    "static-generator",
+    "scaffold",
+    "json-studio",
+    "declarative-ui",
+    "keshavsoft"
+  ],
+  "author": "KeshavSoft",
+  "license": "MIT"
+}

@@ -1,0 +1,60 @@
+{
+  "tagName": "footer",
+  "attributes": {
+    "class": "studio-footer"
+  },
+  "children": [
+    {
+      "tagName": "div",
+      "attributes": {
+        "class": "footer-left"
+      },
+      "children": [
+        {
+          "tagName": "span",
+          "attributes": {
+            "class": "footer-brand"
+          },
+          "children": [
+            {
+              "tagName": "i",
+              "attributes": {
+                "class": "bi bi-braces-asterisk"
+              }
+            },
+            {
+              "tagName": "span",
+              "textContent": "JSON-Driven Assembled Studio"
+            }
+          ]
+        },
+        {
+          "tagName": "span",
+          "textContent": "|"
+        },
+        {
+          "tagName": "span",
+          "attributes": {
+            "id": "layoutMeta"
+          },
+          "textContent": "2 Panes Assembled"
+        }
+      ]
+    },
+    {
+      "tagName": "div",
+      "attributes": {
+        "class": "footer-right"
+      },
+      "children": [
+        {
+          "tagName": "span",
+          "attributes": {
+            "id": "cursorPos"
+          },
+          "textContent": "Ln 1, Col 1"
+        }
+      ]
+    }
+  ]
+}

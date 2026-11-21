@@ -1,0 +1,143 @@
+.studio-workspace {
+    flex: 1;
+    width: 100%;
+    height: calc(100vh - 44px - 24px);
+    background-color: var(--border-color);
+    display: grid;
+    gap: 1px;
+    overflow: hidden;
+}
+
+/* 1 Pane: Full-width 100% */
+.studio-workspace[data-panes="1"] {
+    grid-template-columns: 1fr;
+}
+.studio-workspace[data-panes="1"] #pane2,
+.studio-workspace[data-panes="1"] #pane3 {
+    display: none !important;
+}
+
+/* 2 Panes: 50% / 50% */
+.studio-workspace[data-panes="2"] {
+    grid-template-columns: 1fr 1fr;
+}
+.studio-workspace[data-panes="2"] #pane3 {
+    display: none !important;
+}
+
+/* 3 Panes: 33.3% / 33.3% / 33.3% */
+.studio-workspace[data-panes="3"] {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Fallback when data-panes is unset */
+.studio-workspace:not([data-panes]) {
+    grid-template-columns: 1fr 1fr;
+}
+
+/* Individual Studio Pane */
+.studio-pane {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--bg-editor);
+    overflow: hidden;
+    position: relative;
+    min-width: 0;
+}
+
+/* Mini Header for Each Pane */
+.pane-header {
+    height: 36px;
+    background-color: #14161d;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.pane-header-left, .pane-header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.pane-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-blue);
+    background: var(--accent-blue-bg);
+    border: 1px solid var(--accent-blue-border);
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.btn-pane-file {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #20242f;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.btn-pane-file:hover {
+    background: #2a303f;
+    border-color: var(--accent-blue-border);
+    color: #ffffff;
+}
+
+.btn-pane-file i {
+    color: var(--accent-blue);
+    font-size: 12px;
+}
+
+.pane-file-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pane-file-pill i {
+    color: var(--accent-amber);
+}
+
+.pane-file-name {
+    font-family: var(--font-mono);
+    color: var(--text-primary);
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Editor Body Container */
+.editor-pane-body {
+    flex: 1;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
