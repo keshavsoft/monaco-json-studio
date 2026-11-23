@@ -7,8 +7,8 @@ const args = process.argv.slice(2);
 function printHelp() {
     console.log(`
 ========================================================================
-  🚀 @keshavsoft/monaco-json-studio (v3)
-  Zero-dependency Physical Static Monaco Studio Generator (Spec-Driven)
+  🚀 @keshavsoft/monaco-json-studio (v4 preview)
+  Static Studio Generator with Typed Pane Regions
 ========================================================================
 
 Usage:
@@ -75,7 +75,7 @@ if (panes === null || isNaN(panes) || panes < 1 || panes > 3) {
 const resolvedTarget = path.resolve(process.cwd(), targetDir);
 
 console.log(`\n======================================================`);
-console.log(`  🚀 @keshavsoft/monaco-json-studio (v3)`);
+console.log(`  🚀 @keshavsoft/monaco-json-studio (v4 preview)`);
 console.log(`  Mode: ${panes} Pane${panes > 1 ? 's' : ''} (100% Static HTML)`);
 console.log(`  Target: ${resolvedTarget}`);
 console.log(`======================================================\n`);
@@ -87,8 +87,8 @@ try {
         inTitle: title
     });
 
-    console.log(`✓ Generated 100% STATIC index.html with ${panes} panes baked in`);
-    console.log(`✓ Copied modular CSS (base.css, header.css, workspace.css, footer.css)`);
+    console.log(`✓ Generated static index.html with ${panes} typed panes baked in`);
+    console.log(`✓ Copied modular CSS for the studio shell, pane layout, and pane regions`);
     console.log(`✓ Copied ${panes} sample data files`);
     console.log(`✓ Generated static JS controller (zero runtime assemble/fetch dependencies)`);
 

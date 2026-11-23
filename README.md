@@ -71,6 +71,32 @@ npx @keshavsoft/monaco-json-studio <panes> [targetDir] [options]
 | `--target=<path>` | Named variant for specifying output path. | `./monaco-studio` |
 | `-h, --help` | Display CLI help and argument table. | - |
 
+## 🧩 v4 Preview: Typed Pane Regions
+
+The v4 source preview keeps the existing one, two, and three pane layouts, while each pane receives its own `header`, `body`, and `footer` type. The available first-step types are:
+
+- Headers: `file-picker`, `title`
+- Bodies: `monaco`
+- Footers: `cursor`, `note`, `none`
+
+Generate the three-pane example locally with Node.js (no package installation required):
+
+```bash
+node ./examples/v4-demo.js
+```
+
+The example writes `preview-v4/index.html`. Its first two pane headers use file pickers; the third uses a title-only header. All three bodies use Monaco, and the footers vary by pane. The programmatic contract for each pane is:
+
+```javascript
+{
+    header: { type: "file-picker" },
+    body: { type: "monaco", language: "json" },
+    footer: { type: "note", text: "Data pane • editable JSON" }
+}
+```
+
+Each type is backed by a JSON HTML spec under `assets/v4/specs/regions/` and shared region styles under `assets/v4/css/`. v4 is local source work and has not been published.
+
 ---
 
 ## 📁 Scaffolded Project Structure
