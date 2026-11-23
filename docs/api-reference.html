@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programmatic API Reference - @keshavsoft/monaco-json-studio</title>
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="brand-group">
+      <span>⚡ Monaco JSON Studio</span>
+      <span class="brand-badge">v1.3.1</span>
+    </a>
+    <div class="header-links">
+      <a href="npx-quickstart.html">NPX CLI</a>
+      <a href="panes-guide.html">Panes</a>
+      <a href="api-reference.html">API</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="https://github.com/keshavsoft/monaco-json-studio" target="_blank" class="btn-github">GitHub ↗</a>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <div class="sidebar-heading">Getting Started</div>
+      <ul class="sidebar-nav">
+        <li><a href="index.html">📖 Overview & Story</a></li>
+        <li><a href="npx-quickstart.html">⚡ NPX Quickstart & CLI</a></li>
+      </ul>
+
+      <div class="sidebar-heading">Studio Scaffolding</div>
+      <ul class="sidebar-nav">
+        <li><a href="panes-guide.html">🪟 Multi-Pane Layouts (1-3)</a></li>
+        <li><a href="architecture.html">🏛️ Static Architecture</a></li>
+      </ul>
+
+      <div class="sidebar-heading">Development</div>
+      <ul class="sidebar-nav">
+        <li><a href="api-reference.html" class="active">🔧 Programmatic API</a></li>
+      </ul>
+    </aside>
+
+    <main class="docs-content">
+      <div class="hero">
+        <div class="hero-tagline">Node.js Module API</div>
+        <h1>Programmatic API Reference</h1>
+        <p>Integrate the studio generator, spec assembler, and HTML builder directly into your Node.js pipelines.</p>
+      </div>
+
+      <h2>Installation</h2>
+      <pre><code>npm install @keshavsoft/monaco-json-studio</code></pre>
+
+      <h2>Importing Modules</h2>
+      <pre><code>import { 
+  generateStudio, 
+  buildHtml, 
+  specToHtml, 
+  assembleSpec 
+} from "@keshavsoft/monaco-json-studio";</code></pre>
+
+      <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+
+      <h2>Functions</h2>
+
+      <h3><code>generateStudio(options)</code></h3>
+      <p>Scaffolds the physical directory structure, copies assets, and writes pre-compiled HTML and JS controllers to disk.</p>
+
+      <h4>Parameters: <code>options</code> (Object)</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>inPanes</code></td>
+            <td><code>number</code></td>
+            <td><code>2</code></td>
+            <td>Number of Monaco editor panes to generate (<code>1</code>, <code>2</code>, or <code>3</code>).</td>
+          </tr>
+          <tr>
+            <td><code>inTargetDir</code></td>
+            <td><code>string</code></td>
+            <td><code>'./monaco-studio'</code></td>
+            <td>Destination folder where physical files will be created.</td>
+          </tr>
+          <tr>
+            <td><code>inTitle</code></td>
+            <td><code>string</code></td>
+            <td><code>'Monaco Studio'</code></td>
+            <td>Title displayed in the generated application header bar.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Example:</h4>
+      <pre><code>import { generateStudio } from "@keshavsoft/monaco-json-studio";
+
+const result = generateStudio({
+  inPanes: 2,
+  inTargetDir: "./dist/api-studio",
+  inTitle: "Customer Data Inspector"
+});
+
+console.log(`Generated studio at: ${result.targetDir}`);</code></pre>
+
+      <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+
+      <h3><code>assembleSpec(options)</code></h3>
+      <p>Builds the in-memory studio JSON specification object without writing to disk.</p>
+      <pre><code>import { assembleSpec } from "@keshavsoft/monaco-json-studio";
+
+const spec = assembleSpec({
+  inPanes: 3,
+  inTitle: "Pipeline Viewer"
+});
+
+console.log(spec.header.title); // "Pipeline Viewer"
+console.log(spec.panes.length); // 3</code></pre>
+
+      <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+
+      <h3><code>specToHtml(spec)</code></h3>
+      <p>Converts a studio specification object directly into clean semantic HTML body content.</p>
+      <pre><code>import { assembleSpec, specToHtml } from "@keshavsoft/monaco-json-studio";
+
+const spec = assembleSpec({ inPanes: 2 });
+const bodyHtml = specToHtml(spec);
+// Returns pre-rendered header, workspace panes, and footer elements</code></pre>
+
+      <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+
+      <h3><code>buildHtml(options)</code></h3>
+      <p>Generates the complete <code>index.html</code> document string with full doctype, stylesheet links, and script tags.</p>
+      <pre><code>import { buildHtml } from "@keshavsoft/monaco-json-studio";
+
+const fullHtml = buildHtml({
+  inPanes: 2,
+  inTitle: "Microservice Schema Studio"
+});</code></pre>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>© KeshavSoft. Distributed under the MIT License.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Static Architecture & Specs - @keshavsoft/monaco-json-studio</title>
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="brand-group">
+      <span>⚡ Monaco JSON Studio</span>
+      <span class="brand-badge">v1.3.1</span>
+    </a>
+    <div class="header-links">
+      <a href="npx-quickstart.html">NPX CLI</a>
+      <a href="panes-guide.html">Panes</a>
+      <a href="api-reference.html">API</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="https://github.com/keshavsoft/monaco-json-studio" target="_blank" class="btn-github">GitHub ↗</a>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <div class="sidebar-heading">Getting Started</div>
+      <ul class="sidebar-nav">
+        <li><a href="index.html">📖 Overview & Story</a></li>
+        <li><a href="npx-quickstart.html">⚡ NPX Quickstart & CLI</a></li>
+      </ul>
+
+      <div class="sidebar-heading">Studio Scaffolding</div>
+      <ul class="sidebar-nav">
+        <li><a href="panes-guide.html">🪟 Multi-Pane Layouts (1-3)</a></li>
+        <li><a href="architecture.html" class="active">🏛️ Static Architecture</a></li>
+      </ul>
+
+      <div class="sidebar-heading">Development</div>
+      <ul class="sidebar-nav">
+        <li><a href="api-reference.html">🔧 Programmatic API</a></li>
+      </ul>
+    </aside>
+
+    <main class="docs-content">
+      <div class="hero">
+        <div class="hero-tagline">Engineering Deep Dive</div>
+        <h1>Static Architecture & Specifications</h1>
+        <p>How the declarative spec engine compiles into 100% static, physical project files.</p>
+      </div>
+
+      <h2>Directory Structure of Scaffolded Output</h2>
+      <p>When you scaffold a project, the generator produces this clean, production-ready directory layout:</p>
+
+      <pre><code>my-studio/
+├── css/
+│   ├── base.css          # Reset, theme tokens & typography
+│   ├── header.css        # Branding, title & navigation bar styles
+│   ├── workspace.css     # Flexbox layout, split panes & editors
+│   └── footer.css        # Status bar & metadata layout
+├── data/
+│   ├── data.json         # Seed dataset 1
+│   ├── instructions.json # Seed dataset 2 (if panes >= 2)
+│   └── columns.json      # Seed dataset 3 (if panes >= 3)
+├── js/
+│   ├── state.js          # Reactive runtime state & utilities
+│   └── index.js          # Monaco loader & pane wiring controller
+└── index.html            # 100% pre-rendered static HTML markup</code></pre>
+
+      <h2>Spec-to-HTML Compilation Pipeline</h2>
+      <p>The core pipeline follows a deterministic four-phase generation cycle:</p>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">1️⃣</div>
+          <h3>assembleSpec</h3>
+          <p>Combines <code>header.spec.json</code>, <code>pane.spec.json</code>, and <code>footer.spec.json</code> into an in-memory studio AST based on pane count.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">2️⃣</div>
+          <h3>specToHtml</h3>
+          <p>Transforms the spec tree into clean, deterministic semantic HTML markup without empty template tags or placeholders.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">3️⃣</div>
+          <h3>buildHtml</h3>
+          <p>Wraps the generated body markup with script imports, Google Fonts, and modular stylesheet links inside a complete HTML5 envelope.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">4️⃣</div>
+          <h3>generateStudio</h3>
+          <p>Physically creates directories on disk, copies CSS/sample data assets, and writes out <code>index.html</code> and JS controllers.</p>
+        </div>
+      </div>
+
+      <h2>Modular Control-Scoped CSS</h2>
+      <p>Instead of a monolithic CSS bundle, <code>monaco-json-studio</code> isolates presentation concerns into four lightweight files:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Stylesheet</th>
+            <th>Responsibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>css/base.css</code></td>
+            <td>Global CSS variables, font families, dark theme colors (<code>#1e1e1e</code>, <code>#252526</code>), and box sizing.</td>
+          </tr>
+          <tr>
+            <td><code>css/header.css</code></td>
+            <td>Top navigation layout, title styling, and header actions.</td>
+          </tr>
+          <tr>
+            <td><code>css/workspace.css</code></td>
+            <td>Dynamic flex splits (100%, 50%, 33.33%), pane borders, headers, buttons, and Monaco container heights.</td>
+          </tr>
+          <tr>
+            <td><code>css/footer.css</code></td>
+            <td>Fixed bottom status bar, item counters, and file-loaded notifications.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Zero Runtime Bundler Requirements</h2>
+      <div class="callout callout-success">
+        <h4>Offline and CDN Flexibility</h4>
+        <p>The generated studio fetches Monaco Editor from CDN via standard RequireJS loader (configured for <code>cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs</code>). No Webpack, Rollup, or Vite server required.</p>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>© KeshavSoft. Distributed under the MIT License.</p>
+  </footer>
+</body>
+</html>

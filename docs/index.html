@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overview & Introduction - @keshavsoft/monaco-json-studio</title>
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="brand-group">
+      <span>⚡ Monaco JSON Studio</span>
+      <span class="brand-badge">v1.3.1</span>
+    </a>
+    <div class="header-links">
+      <a href="npx-quickstart.html">NPX CLI</a>
+      <a href="panes-guide.html">Panes</a>
+      <a href="api-reference.html">API</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="https://github.com/keshavsoft/monaco-json-studio" target="_blank" class="btn-github">GitHub ↗</a>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <div class="sidebar-heading">Getting Started</div>
+      <ul class="sidebar-nav">
+        <li><a href="index.html" class="active">📖 Overview & Story</a></li>
+        <li><a href="npx-quickstart.html">⚡ NPX Quickstart & CLI</a></li>
+      </ul>
+
+      <div class="sidebar-heading">Studio Scaffolding</div>
+      <ul class="sidebar-nav">
+        <li><a href="panes-guide.html">🪟 Multi-Pane Layouts (1-3)</a></li>
+        <li><a href="architecture.html">🏛️ Static Architecture</a></li>
+      </ul>
+
+      <div class="sidebar-heading">Development</div>
+      <ul class="sidebar-nav">
+        <li><a href="api-reference.html">🔧 Programmatic API</a></li>
+      </ul>
+    </aside>
+
+    <main class="docs-content">
+      <section class="hero">
+        <div class="hero-tagline">Specification-Driven Studio Generator</div>
+        <h1>Zero-Dependency Physical & Static Monaco JSON Studio</h1>
+        <p>A fast, declarative scaffolding tool that generates 100% static, production-grade Monaco Editor workspaces with 1, 2, or 3 interactive JSON split panes.</p>
+      </section>
+
+      <h2>The Story & Philosophy</h2>
+      <p>Modern web development often introduces heavyweight build chains, bundlers, and runtime dependencies just to display and inspect JSON files side-by-side in Monaco Editor. When inspecting configuration files, API responses, schema definitions, or translation tables, developers want <strong>instant physical static files</strong> without orchestrating servers, webpack, or Vite builds.</p>
+      
+      <p><strong>@keshavsoft/monaco-json-studio</strong> was built to solve this with a strictly disciplined philosophy:</p>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">🚀</div>
+          <h3>One-Shot NPX Command</h3>
+          <p>Run a single command with <code>npx</code>, specify how many JSON panes you need (1, 2, or 3), and instantly get a working studio.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📄</div>
+          <h3>100% Static HTML Output</h3>
+          <p>No empty root mount containers. All DOM structures, headers, split panes, and controls are pre-compiled directly into <code>index.html</code>.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🎨</div>
+          <h3>Modular Control-Scoped CSS</h3>
+          <p>Scaffolds with clean CSS files (<code>base.css</code>, <code>header.css</code>, <code>workspace.css</code>, <code>footer.css</code>) rather than messy monoliths.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📂</div>
+          <h3>Independent Pane Controls</h3>
+          <p>Every editor pane has its own independent file picker, filename badge, and live JSON validator wired out of the box.</p>
+        </div>
+      </div>
+
+      <h2>Quick NPX Example</h2>
+      <pre><code># Instantly generate a 2-Pane Dual JSON Studio
+npx @keshavsoft/monaco-json-studio 2 ./my-dual-studio --title="API Data Diff Studio"
+
+# Open the studio in your browser immediately (100% static)
+cd my-dual-studio
+# Double-click index.html or serve locally:
+npx serve .</code></pre>
+
+      <div class="callout callout-success">
+        <h4>Zero Runtime Assembler Overhead</h4>
+        <p>The generated studio requires no server backend, no database, and no compilation step. It is completely portable and can be deployed instantly to GitHub Pages, Cloudflare Pages, S3, or any static host.</p>
+      </div>
+
+      <h2>Explore the Documentation</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Section</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="npx-quickstart.html"><strong>NPX Quickstart & CLI</strong></a></td>
+            <td>Command-line options, flags, parameters, and instant folder scaffolding recipes.</td>
+          </tr>
+          <tr>
+            <td><a href="panes-guide.html"><strong>Multi-Pane Layouts (1, 2, 3)</strong></a></td>
+            <td>Detailed breakdown of Single (100%), Dual (50/50), and Triple (33/33/33) pane configurations.</td>
+          </tr>
+          <tr>
+            <td><a href="architecture.html"><strong>Static Architecture</strong></a></td>
+            <td>How the physical scaffold generator assembles specifications into static assets.</td>
+          </tr>
+          <tr>
+            <td><a href="api-reference.html"><strong>Programmatic API</strong></a></td>
+            <td>Exported functions for integrating generator logic into Node.js scripts and workflows.</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>© KeshavSoft. Distributed under the MIT License.</p>
+  </footer>
+</body>
+</html>

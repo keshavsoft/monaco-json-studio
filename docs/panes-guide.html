@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Pane Layouts Guide - @keshavsoft/monaco-json-studio</title>
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="brand-group">
+      <span>⚡ Monaco JSON Studio</span>
+      <span class="brand-badge">v1.3.1</span>
+    </a>
+    <div class="header-links">
+      <a href="npx-quickstart.html">NPX CLI</a>
+      <a href="panes-guide.html">Panes</a>
+      <a href="api-reference.html">API</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="https://github.com/keshavsoft/monaco-json-studio" target="_blank" class="btn-github">GitHub ↗</a>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <div class="sidebar-heading">Getting Started</div>
+      <ul class="sidebar-nav">
+        <li><a href="index.html">📖 Overview & Story</a></li>
+        <li><a href="npx-quickstart.html">⚡ NPX Quickstart & CLI</a></li>
+      </ul>
+
+      <div class="sidebar-heading">Studio Scaffolding</div>
+      <ul class="sidebar-nav">
+        <li><a href="panes-guide.html" class="active">🪟 Multi-Pane Layouts (1-3)</a></li>
+        <li><a href="architecture.html">🏛️ Static Architecture</a></li>
+      </ul>
+
+      <div class="sidebar-heading">Development</div>
+      <ul class="sidebar-nav">
+        <li><a href="api-reference.html">🔧 Programmatic API</a></li>
+      </ul>
+    </aside>
+
+    <main class="docs-content">
+      <div class="hero">
+        <div class="hero-tagline">Layout Configurations</div>
+        <h1>Multi-Pane Layouts (1, 2, or 3 Panes)</h1>
+        <p>Learn how each pane mode is wired, structured, and customized for different data comparison scenarios.</p>
+      </div>
+
+      <h2>Comparison Matrix</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Pane Mode</th>
+            <th>Width Distribution</th>
+            <th>Best Suited For</th>
+            <th>Sample Data Seeded</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1 Pane</strong></td>
+            <td>100% full width</td>
+            <td>JSON data inspection, log examination, schema viewing</td>
+            <td><code>data.json</code></td>
+          </tr>
+          <tr>
+            <td><strong>2 Panes</strong></td>
+            <td>50% / 50% split</td>
+            <td>Before/After diffing, Input vs Output, Schema vs Mock</td>
+            <td><code>data.json</code>, <code>instructions.json</code></td>
+          </tr>
+          <tr>
+            <td><strong>3 Panes</strong></td>
+            <td>33.33% each</td>
+            <td>Data + Column Specs + Transformation Instructions</td>
+            <td><code>data.json</code>, <code>instructions.json</code>, <code>columns.json</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Detailed Pane Profiles</h2>
+
+      <div class="card" style="margin-bottom: 2rem;">
+        <h3>1. Single Pane (100% Full Width)</h3>
+        <p>When you scaffold with <code>1</code>, the workspace compiles a single full-width container:</p>
+        <pre><code>&lt;div class="workspace"&gt;
+  &lt;div class="pane" id="pane1" style="width: 100%;"&gt;
+    &lt;div class="pane-header"&gt;
+      &lt;span class="badge"&gt;Data&lt;/span&gt;
+      &lt;span id="fileName1" class="file-name"&gt;data.json&lt;/span&gt;
+      &lt;button id="fileBtn1" class="btn"&gt;Open File&lt;/button&gt;
+      &lt;input type="file" id="fileInput1" accept=".json" hidden&gt;
+    &lt;/div&gt;
+    &lt;div id="editor1" class="editor-container"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <p><strong>Use Case:</strong> Clean viewer for standalone JSON documents with formatting, folding, and search.</p>
+      </div>
+
+      <div class="card" style="margin-bottom: 2rem;">
+        <h3>2. Dual Pane (50% / 50% Split)</h3>
+        <p>The most popular split layout. Generates two balanced editors with distinct pane IDs (<code>#pane1</code> and <code>#pane2</code>):</p>
+        <pre><code>npx @keshavsoft/monaco-json-studio 2 ./my-dual-studio</code></pre>
+        <ul>
+          <li><strong>Left Pane:</strong> Seeds with <code>data.json</code></li>
+          <li><strong>Right Pane:</strong> Seeds with <code>instructions.json</code></li>
+          <li><strong>Controls:</strong> Both panes maintain independent file upload buttons, formatters, and status updates.</li>
+        </ul>
+      </div>
+
+      <div class="card" style="margin-bottom: 2rem;">
+        <h3>3. Triple Pane (33% / 33% / 33% Split)</h3>
+        <p>Built for advanced multi-layer workflows:</p>
+        <pre><code>npx @keshavsoft/monaco-json-studio 3 ./my-triple-studio</code></pre>
+        <ul>
+          <li><strong>Pane 1 (33.33%):</strong> Data Source (<code>data.json</code>)</li>
+          <li><strong>Pane 2 (33.33%):</strong> Column Spec (<code>instructions.json</code>)</li>
+          <li><strong>Pane 3 (33.33%):</strong> Transformation/Format Rules (<code>columns.json</code>)</li>
+        </ul>
+      </div>
+
+      <h2>Independent Pane Event Architecture</h2>
+      <p>Each editor pane is initialized with its own event wiring:</p>
+      <ul>
+        <li><strong>Local File Reading:</strong> Selecting a <code>.json</code> file on Pane 2 updates only Pane 2's editor model and file badge without refreshing or resetting Pane 1.</li>
+        <li><strong>Automatic Formatting:</strong> Loaded JSON files are run through a pretty-printer (<code>JSON.stringify(JSON.parse(text), null, 2)</code>) automatically.</li>
+        <li><strong>State Isolation:</strong> The controller maintains state arrays <code>state.editors[]</code>, <code>state.fileNames[]</code>, and <code>state.contents[]</code> indexed by pane order.</li>
+      </ul>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>© KeshavSoft. Distributed under the MIT License.</p>
+  </footer>
+</body>
+</html>
