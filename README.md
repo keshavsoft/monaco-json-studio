@@ -2,11 +2,11 @@
 
 **Choose a pane count. Get a complete static studio.**
 
-Monaco JSON Studio creates one, two, or three side-by-side panes with a ready-made studio header, pane headers, Monaco bodies, pane footers, and a global status footer. The generated HTML already contains the complete page structure; modular CSS arranges and styles it.
+Monaco JSON Studio generates one, two, or three editor panes with a ready-made studio header, pane headers, Monaco bodies, pane footers, and global status footer. The public choice stays small; the generator owns the composition.
 
-## Use the v5 command
+## Use it
 
-The v5 consumer contract is one number:
+The v6 command takes one number and writes `./monaco-studio` in the current directory:
 
 ```bash
 npx monaco-json-studio 1
@@ -14,48 +14,48 @@ npx monaco-json-studio 2
 npx monaco-json-studio 3
 ```
 
-The generator writes a `monaco-studio/` folder in the current directory. The number controls both the number of pane sections in the HTML and the workspace grid.
-
-### Try the local source preview
-
-v5 is local source work and has not been published. To run this checkout, use:
+From this checkout, run the local source directly:
 
 ```bash
 node ./bin/index.js 3
 ```
 
-The published npm package will keep serving its current release until a new release is published. This repository has not been pushed or published as part of the v5 work.
+v6 is local source work and has not been published. Registry users continue to receive the published release until a new release is made.
 
-## The generation story
+## The v6 generation story
 
-The CLI passes the count to one high-level generator. Internally, the generator:
-
-1. Creates the studio-level header and footer.
-2. Builds a one-, two-, or three-column workspace.
-3. Creates each pane from a pane header, body, and footer.
-4. Serializes the assembled document to static HTML.
-5. Copies modular CSS, sample data, and the Monaco runtime controller.
-
-The studio header/footer frame the complete page. Each pane has its own header/body/footer regions. These are separate modules because they have separate jobs.
+The package root exposes one default generator, and the CLI passes it the pane count. Internally, focused functions build the studio header, workspace, pane header/body/footer, and studio footer. Handlebars templates render those pieces into static HTML.
 
 ```text
-src/v5/
-├── generateStudio/       # High-level generation operation
-├── createStudioDocument/ # Complete HTML document
+src/v6/
+├── generateStudio/       # One high-level generation operation
+├── createStudioDocument/ # Complete page composition
 ├── createStudioHeader/   # Studio-wide header
 ├── createWorkspace/      # Grid and pane count
 ├── createPane/           # Composes each pane
-├── createPaneHeader/     # Pane controls and label
-├── createPaneBody/       # Monaco mount region
-├── createPaneFooter/     # Pane status or summary
-├── createStudioFooter/   # Studio-wide status bar
-├── serializeHtml/        # HTML serialization
-└── internal/             # Defaults and spec helpers
+├── createPaneHeader/
+├── createPaneBody/
+├── createPaneFooter/
+├── createStudioFooter/   # Studio-wide status footer
+└── internal/             # Count validation, defaults, Handlebars loader
 
-assets/v5/
-├── specs/regions/        # Region markup specifications
-├── css/                  # Shell, layout, and region styles
-└── templates/            # Browser-side Monaco controller
+assets/v6/
+├── templates/            # Handlebars HTML templates and Monaco controller
+│   └── regions/          # Header, body, and footer templates
+└── css/                  # Base, shell, pane layout, and region styles
+```
+
+The generated folder contains plain HTML, CSS, sample data, and the browser-side Monaco controller. Handlebars renders at generation time; it is not shipped into the generated page.
+
+## Local preview with Vite
+
+Vite is a development dependency for serving the generated preview. It does not participate in the consumer command or generated runtime.
+
+```bash
+cd preview-v6
+node ../bin/index.js 3
+cd ..
+npm run dev:v6
 ```
 
 ## Generated project
@@ -74,24 +74,12 @@ monaco-studio/
     └── state.js
 ```
 
-Serve the generated folder with any static web server and open `index.html` through that server.
-
-## Programmatic use
-
-The package root exposes one default generator. It takes the same pane count and writes to `./monaco-studio`:
-
-```javascript
-import generateStudio from 'monaco-json-studio';
-
-generateStudio(3);
-```
-
 ## Documentation
 
-- [v5 story and source architecture](docs/v5-story.html)
-- [v5 command usage](docs/npx-quickstart.html)
-- [Generated project architecture](docs/architecture.html)
-- [Previous v4 contract draft](docs/v4-consumption.html)
+- [v6 story and source architecture](docs/v6-story.html)
+- [v6 command usage](docs/npx-quickstart.html)
+- [Programmatic entry point](docs/api-reference.html)
+- [Earlier v5 architecture](docs/v5-story.html)
 
 ## License
 

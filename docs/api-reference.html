@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Programmatic Entry Point - Monaco JSON Studio v5</title>
+  <title>Programmatic Entry Point - Monaco JSON Studio v6</title>
   <link rel="stylesheet" href="docs.css">
   <style>
     .preview-note { margin:18px 0; padding:16px 18px; border:1px solid rgba(251,191,36,.32); border-radius:10px; background:rgba(251,191,36,.08); color:#e9d8ad; line-height:1.6; }
@@ -13,10 +13,10 @@
 </head>
 <body>
   <header class="site-header">
-    <a href="index.html" class="brand-group"><span>⚡ Monaco JSON Studio</span><span class="brand-badge">v5 · source preview</span></a>
+    <a href="index.html" class="brand-group"><span>⚡ Monaco JSON Studio</span><span class="brand-badge">v6 · source preview</span></a>
     <nav class="header-links" aria-label="Documentation">
       <a href="npx-quickstart.html">Command line</a>
-      <a href="v5-story.html">The v5 story</a>
+      <a href="v6-story.html">The v6 story</a>
       <a href="architecture.html">Architecture</a>
     </nav>
   </header>
@@ -27,7 +27,7 @@
       <ul class="sidebar-nav">
         <li><a href="npx-quickstart.html">NPX command</a></li>
         <li><a href="api-reference.html" class="active">Node entry point</a></li>
-        <li><a href="v5-story.html">Source architecture</a></li>
+        <li><a href="v6-story.html">Source architecture</a></li>
       </ul>
     </aside>
 
@@ -38,7 +38,7 @@
         <p>The package root exposes one default generator. The HTML assemblers, region creators, and serializer remain internal implementation details.</p>
       </div>
 
-      <div class="preview-note"><strong>Release status:</strong> v5 is local source work and has not been published. The import below documents the intended package interface after release. To try the current checkout, run <code>node ./bin/index.js 3</code>.</div>
+      <div class="preview-note"><strong>Release status:</strong> v6 is local source work and has not been published. The import below documents the intended package interface after release. To try the current checkout, run <code>node ./bin/index.js 3</code>.</div>
 
       <section class="one-api">
         <h2>Install after release</h2>
@@ -52,8 +52,8 @@ generateStudio(3);</code></pre>
       <p>The only generator input is the pane count: <code>1</code>, <code>2</code>, or <code>3</code>. The output is written to <code>./monaco-studio</code> under the current working directory.</p>
 
       <h2>What stays behind the entry point</h2>
-      <p>Internally, v5 creates the global studio header and footer, creates the workspace grid, and assembles each pane from its own header, body, and footer. Those functions can change as the implementation improves without making consumers learn a larger API.</p>
-      <p>For the command-line version and generated directory structure, see the <a href="npx-quickstart.html">v5 command guide</a>. For the internal module story, see <a href="v5-story.html">how v5 builds the studio</a>.</p>
+      <p>Internally, v6 uses Handlebars templates to create the global studio header and footer, the workspace grid, and each pane’s header, body, and footer. Those templates and functions can change without making consumers learn a larger API.</p>
+      <p>For the command-line version and generated directory structure, see the <a href="npx-quickstart.html">v6 command guide</a>. For the internal module story, see <a href="v6-story.html">how v6 builds the studio</a>.</p>
     </main>
   </div>
   <footer class="site-footer"><p>© KeshavSoft. Distributed under the MIT License.</p></footer>

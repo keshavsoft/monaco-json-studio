@@ -28,7 +28,8 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "node --check src/index.js && node --check bin/index.js"
+    "test": "node --check src/index.js && node --check bin/index.js",
+    "dev:v6": "vite preview-v6/monaco-studio"
   },
   "keywords": [
     "monaco",
@@ -41,5 +42,11 @@
     "keshavsoft"
   ],
   "author": "KeshavSoft",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "handlebars": "^4.7.10"
+  },
+  "devDependencies": {
+    "vite": "^8.3.8"
+  }
 }

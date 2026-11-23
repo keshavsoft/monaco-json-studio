@@ -1,0 +1,9 @@
+{
+  "tagName": "footer",
+  "attributes": {
+    "class": "pane-region pane-footer pane-footer--note",
+    "data-region": "footer",
+    "data-type": "note"
+  },
+  "textContent": "{{text}}"
+}

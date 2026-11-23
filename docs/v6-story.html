@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Monaco JSON Studio v6: one pane-count choice rendered through Handlebars templates into a static studio.">
+  <title>Monaco JSON Studio v6 — Templates tell the story</title>
+  <link rel="stylesheet" href="docs.css">
+  <style>
+    :root { --v6-bg:#0c111b; --v6-panel:#142031; --v6-line:rgba(166,190,220,.15); --v6-text:#edf4ff; --v6-muted:#a7b6ca; --v6-cyan:#68d9ff; --v6-green:#7de3bd; --v6-gold:#ffd27f; }
+    body { background:var(--v6-bg); color:var(--v6-text); }
+    .site-header { position:sticky; top:0; z-index:5; backdrop-filter:blur(16px); }
+    .docs-layout { max-width:1440px; margin:0 auto; }
+    .docs-content { max-width:1050px; }
+    .v6-hero { position:relative; overflow:hidden; margin:26px 0 30px; padding:clamp(30px,5vw,58px); border:1px solid rgba(104,217,255,.2); border-radius:22px; background:radial-gradient(circle at 90% 8%,rgba(104,217,255,.2),transparent 25rem),radial-gradient(circle at 6% 110%,rgba(125,227,189,.12),transparent 24rem),linear-gradient(135deg,#1a2b40,#101a29 66%); box-shadow:0 24px 68px rgba(0,0,0,.24); }
+    .v6-hero::after { content:"{{ }}"; position:absolute; right:5%; bottom:-40px; color:rgba(104,217,255,.075); font:800 clamp(95px,15vw,180px)/1 ui-monospace,monospace; letter-spacing:-.11em; pointer-events:none; }
+    .v6-hero > * { position:relative; z-index:1; }
+    .v6-kicker { color:var(--v6-cyan); font:700 11px ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; }
+    .v6-hero h1 { max-width:750px; margin:17px 0 12px; color:var(--v6-text); font-size:clamp(36px,5.5vw,62px); line-height:1.03; letter-spacing:-.05em; }
+    .v6-hero p { max-width:700px; margin:0; color:#c5d3e5; font-size:17px; line-height:1.68; }
+    .v6-chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:23px; }
+    .v6-chip { padding:7px 11px; border:1px solid var(--v6-line); border-radius:999px; background:rgba(7,13,22,.36); color:#cedbed; font-size:12px; }
+    .v6-chip strong { color:var(--v6-green); }
+    .v6-grid { display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:26px; align-items:start; }
+    .v6-section { margin:32px 0; scroll-margin-top:90px; }
+    .v6-section h2 { margin:0 0 10px; color:var(--v6-text); font-size:25px; letter-spacing:-.03em; }
+    .v6-section > p { max-width:800px; color:var(--v6-muted); line-height:1.7; }
+    .v6-command,.v6-tree { overflow:auto; margin:16px 0; padding:18px 20px; border:1px solid rgba(150,181,216,.16); border-radius:13px; background:#080d15; color:#d7e6f7; font:12px/1.75 ui-monospace,monospace; }
+    .v6-command { color:var(--v6-gold); font-size:14px; }
+    .v6-tree .folder { color:var(--v6-cyan); }
+    .v6-tree .role { color:#7488a3; }
+    .v6-flow { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin:18px 0; }
+    .v6-flow article { min-height:143px; padding:15px; border:1px solid var(--v6-line); border-radius:14px; background:linear-gradient(180deg,#17263a,#121b29); }
+    .v6-flow b { color:var(--v6-cyan); font:700 11px ui-monospace,monospace; }
+    .v6-flow h3 { margin:11px 0 6px; color:var(--v6-text); font-size:14px; }
+    .v6-flow p { margin:0; color:var(--v6-muted); font-size:12px; line-height:1.55; }
+    .v6-callout { display:flex; gap:12px; margin:17px 0; padding:16px 18px; border:1px solid rgba(255,210,127,.22); border-radius:13px; background:rgba(255,210,127,.06); color:#e7d9bd; line-height:1.65; }
+    .v6-callout strong { color:#fff0cf; }
+    .v6-toc { position:sticky; top:94px; padding:15px; border:1px solid var(--v6-line); border-radius:13px; background:rgba(20,32,49,.8); }
+    .v6-toc h2 { margin:0 0 9px; color:#91a6c0; font:700 10px ui-monospace,monospace; letter-spacing:.12em; text-transform:uppercase; }
+    .v6-toc a { display:block; padding:7px 0; color:#bfccdd; font-size:12px; text-decoration:none; }
+    .v6-toc a:hover { color:var(--v6-cyan); }
+    .v6-finish { margin:28px 0 12px; padding:21px; border:1px solid rgba(125,227,189,.22); border-radius:16px; background:linear-gradient(120deg,rgba(104,217,255,.08),rgba(125,227,189,.06)); }
+    .v6-finish h2 { margin:0 0 7px; color:var(--v6-text); font-size:18px; }
+    .v6-finish p { margin:0; color:var(--v6-muted); line-height:1.65; }
+    .v6-note { margin-top:14px; color:#7d8da3; font-size:11px; line-height:1.6; }
+    @media(max-width:1000px) { .v6-grid { grid-template-columns:1fr; } .v6-toc { position:static; display:flex; flex-wrap:wrap; gap:5px 18px; } .v6-toc h2 { width:100%; } .v6-flow { grid-template-columns:repeat(3,1fr); } }
+    @media(max-width:640px) { .v6-flow { grid-template-columns:1fr; } .v6-flow article { min-height:0; } .v6-hero { border-radius:15px; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="brand-group"><span>⚡ Monaco JSON Studio</span><span class="brand-badge">v6 · source preview</span></a>
+    <nav class="header-links" aria-label="Documentation">
+      <a href="npx-quickstart.html">Command</a>
+      <a href="api-reference.html">Node API</a>
+      <a href="architecture.html">Earlier architecture</a>
+    </nav>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <div class="sidebar-heading">v6 Story</div>
+      <ul class="sidebar-nav">
+        <li><a class="active" href="v6-story.html">One number, full studio</a></li>
+        <li><a href="npx-quickstart.html">Run from the CLI</a></li>
+      </ul>
+      <div class="sidebar-heading">Under the hood</div>
+      <ul class="sidebar-nav">
+        <li><a href="#flow">Generation flow</a></li>
+        <li><a href="#templates">Templates and functions</a></li>
+        <li><a href="#vite">Vite preview</a></li>
+      </ul>
+    </aside>
+
+    <main class="docs-content">
+      <section class="v6-hero">
+        <div class="v6-kicker">Monaco JSON Studio · Version 6</div>
+        <h1>One number enters. A studio comes out.</h1>
+        <p>Choose one, two, or three panes. Handlebars turns focused HTML templates into the studio shell and pane regions. CSS arranges them into the static page.</p>
+        <div class="v6-chips"><span class="v6-chip"><strong>1–3</strong> panes</span><span class="v6-chip">One public input</span><span class="v6-chip">Handlebars at generation time</span><span class="v6-chip">Static generated page</span></div>
+      </section>
+
+      <div class="v6-grid">
+        <div>
+          <section class="v6-section" id="command">
+            <h2>The consumer command stays small</h2>
+            <p>The count sets the number of panes and the corresponding workspace grid. The generator writes its output into <code>./monaco-studio</code>.</p>
+            <pre class="v6-command"><code>npx monaco-json-studio 3</code></pre>
+            <div class="v6-callout"><span aria-hidden="true">ℹ</span><div><strong>Local preview:</strong> v6 is in this source checkout and has not been published. Try it here with <code>node ./bin/index.js 3</code>; the registry command will use the existing published release until a new release is made.</div></div>
+          </section>
+
+          <section class="v6-section" id="flow">
+            <h2>How the number becomes a page</h2>
+            <p>Each phase has a focused function. The CLI does not need to know which region templates are used.</p>
+            <div class="v6-flow">
+              <article><b>01 · Validate</b><h3>Pane count</h3><p>Accept only 1, 2, or 3.</p></article>
+              <article><b>02 · Frame</b><h3>Studio shell</h3><p>Create the global header and status footer.</p></article>
+              <article><b>03 · Arrange</b><h3>Workspace</h3><p>Select the matching CSS grid.</p></article>
+              <article><b>04 · Compose</b><h3>Pane regions</h3><p>Create each header, Monaco body, and footer.</p></article>
+              <article><b>05 · Emit</b><h3>Static project</h3><p>Write HTML and copy CSS, data, and runtime files.</p></article>
+            </div>
+          </section>
+
+          <section class="v6-section" id="templates">
+            <h2>Functions build the parts; templates show the markup</h2>
+            <p>The region-creation functions select a Handlebars template and supply its data. Each template is readable HTML, so a maintainer can see what the control emits without inspecting an abstract HTML tree.</p>
+            <pre class="v6-tree"><code><span class="folder">src/v6/</span>
+├── generateStudio/       <span class="role">public generation operation</span>
+├── createStudioDocument/ <span class="role">joins the studio shell and workspace</span>
+├── createStudioHeader/
+├── createWorkspace/
+├── createPane/           <span class="role">composes three pane regions</span>
+├── createPaneHeader/
+├── createPaneBody/
+├── createPaneFooter/
+├── createStudioFooter/
+└── internal/             <span class="role">Handlebars loader and pane defaults</span>
+
+<span class="folder">assets/v6/templates/</span>
+├── document.hbs
+├── studio-header.hbs
+├── workspace.hbs
+├── pane.hbs
+└── regions/
+    ├── header/           <span class="role">file-picker.hbs, title.hbs</span>
+    ├── body/             <span class="role">monaco.hbs</span>
+    └── footer/           <span class="role">cursor.hbs, note.hbs</span></code></pre>
+            <p>Handlebars is only used by the Node generator. The output page is plain HTML and CSS; it does not load Handlebars.</p>
+          </section>
+
+          <section class="v6-section" id="vite">
+            <h2>Vite serves the local preview</h2>
+            <p>Vite is a development dependency for iterating on the generated page. It is separate from both the count-only CLI contract and the generated runtime.</p>
+            <pre class="v6-command"><code>cd preview-v6
+node ../bin/index.js 3
+cd ..
+npm run dev:v6</code></pre>
+            <p>The Vite server opens the generated preview under <code>preview-v6/monaco-studio</code>. The generated project itself can still be served by any static host.</p>
+          </section>
+
+          <section class="v6-section" id="output">
+            <h2>Generated files</h2>
+            <pre class="v6-tree"><code>monaco-studio/
+├── index.html
+├── css/
+│   ├── base.css
+│   ├── studio.css
+│   ├── pane-layout.css
+│   └── pane-regions.css
+├── data/
+└── js/
+    ├── index.js
+    └── state.js</code></pre>
+          </section>
+
+          <section class="v6-finish">
+            <h2>Readable source, straightforward usage</h2>
+            <p>The user picks a count. The source stays organized around recognizable page parts. Handlebars handles repeated markup, and the browser receives the same simple static project.</p>
+          </section>
+          <p class="v6-note">v6 source preview. Handlebars templates and Vite preview are local changes; no Git push or npm publish has occurred.</p>
+        </div>
+
+        <nav class="v6-toc" aria-label="On this page">
+          <h2>On this page</h2>
+          <a href="#command">One command</a>
+          <a href="#flow">Generation flow</a>
+          <a href="#templates">Templates and functions</a>
+          <a href="#vite">Vite preview</a>
+          <a href="#output">Generated files</a>
+        </nav>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

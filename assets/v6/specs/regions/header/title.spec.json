@@ -1,0 +1,11 @@
+{
+  "tagName": "header",
+  "attributes": {
+    "class": "pane-region pane-header pane-header--title",
+    "data-region": "header",
+    "data-type": "title"
+  },
+  "children": [
+    { "tagName": "span", "attributes": { "class": "pane-label" }, "textContent": "{{label}}" }
+  ]
+}

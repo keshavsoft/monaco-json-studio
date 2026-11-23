@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>v5 Command Usage - Monaco JSON Studio</title>
+  <title>v6 Command Usage - Monaco JSON Studio</title>
   <link rel="stylesheet" href="docs.css">
   <style>
     .release-note { margin:18px 0; padding:16px 18px; border:1px solid rgba(251,191,36,.32); border-radius:10px; background:rgba(251,191,36,.08); color:#e9d8ad; line-height:1.6; }
@@ -20,9 +20,9 @@
 </head>
 <body>
   <header class="site-header">
-    <a href="index.html" class="brand-group"><span>⚡ Monaco JSON Studio</span><span class="brand-badge">v5 source preview</span></a>
+    <a href="index.html" class="brand-group"><span>⚡ Monaco JSON Studio</span><span class="brand-badge">v6 source preview</span></a>
     <nav class="header-links" aria-label="Documentation">
-      <a href="v5-story.html">The v5 story</a>
+      <a href="v6-story.html">The v6 story</a>
       <a href="architecture.html">Architecture</a>
       <a href="api-reference.html">Earlier API</a>
     </nav>
@@ -33,19 +33,19 @@
       <div class="sidebar-heading">Run Monaco JSON Studio</div>
       <ul class="sidebar-nav">
         <li><a class="active" href="npx-quickstart.html">One-count command</a></li>
-        <li><a href="v5-story.html">How the generator works</a></li>
+        <li><a href="v6-story.html">How the generator works</a></li>
         <li><a href="architecture.html">Generated project files</a></li>
       </ul>
     </aside>
 
     <main class="docs-content">
       <div class="hero">
-        <div class="hero-tagline">Monaco JSON Studio · v5</div>
+        <div class="hero-tagline">Monaco JSON Studio · v6</div>
         <h1>One command. Pick the pane count.</h1>
         <p>The consumer chooses the workspace size. The generator composes the headers, editor bodies, footers, HTML, and CSS.</p>
       </div>
 
-      <div class="release-note"><strong>Local source preview:</strong> v5 is in this repository and has not been published. The command below describes v5. The npm registry continues to serve the previously published release until a new version is released.</div>
+      <div class="release-note"><strong>Local source preview:</strong> v6 is in this repository and has not been published. The command below describes v6. The npm registry continues to serve the previously published release until a new version is released.</div>
 
       <section class="command-card">
         <h2>Command</h2>
@@ -65,6 +65,13 @@
       <pre><code>node ./bin/index.js 3</code></pre>
       <p>The local generator writes the project to <code>./monaco-studio</code>. Serve that folder with a static web server to load Monaco and the sample JSON files.</p>
 
+      <h2>Preview the v6 templates with Vite</h2>
+      <p>From this checkout, create the three-pane preview and start the Vite development server:</p>
+      <pre><code>cd preview-v6
+node ../bin/index.js 3
+cd ..
+npm run dev:v6</code></pre>
+
       <h2>What is inside?</h2>
       <pre><code>monaco-studio/
 ├── index.html
@@ -82,7 +89,7 @@
         <h4>One public choice, clear internal parts</h4>
         <p>The pane count drives the workspace. Inside the generator, studio-level header and footer modules frame the page, while each pane is assembled from a pane header, body, and footer. The generated project stays plain HTML and CSS around the Monaco control.</p>
       </div>
-      <p><a href="v5-story.html">Read the v5 generation story →</a></p>
+      <p><a href="v6-story.html">Read the v6 generation story →</a></p>
     </main>
   </div>
   <footer class="site-footer"><p>© KeshavSoft. Distributed under the MIT License.</p></footer>
