@@ -1,0 +1,53 @@
+{
+  "tagName": "header",
+  "attributes": {
+    "class": "pane-region pane-header pane-header--file-picker",
+    "data-region": "header",
+    "data-type": "file-picker"
+  },
+  "children": [
+    {
+      "tagName": "div",
+      "attributes": { "class": "pane-header__left" },
+      "children": [
+        { "tagName": "span", "attributes": { "class": "pane-label" }, "textContent": "{{label}}" },
+        {
+          "tagName": "button",
+          "attributes": {
+            "id": "{{fileBtnId}}",
+            "type": "button",
+            "class": "btn-pane-file",
+            "title": "Choose a file for {{label}}"
+          },
+          "children": [
+            { "tagName": "i", "attributes": { "class": "bi bi-folder2-open", "aria-hidden": "true" } },
+            { "tagName": "span", "textContent": "Select File" }
+          ]
+        },
+        {
+          "tagName": "input",
+          "attributes": {
+            "type": "file",
+            "id": "{{fileInputId}}",
+            "class": "pane-file-input",
+            "accept": ".json,.js,.txt,application/json"
+          }
+        }
+      ]
+    },
+    {
+      "tagName": "div",
+      "attributes": { "class": "pane-header__right" },
+      "children": [
+        {
+          "tagName": "span",
+          "attributes": { "class": "pane-file-pill" },
+          "children": [
+            { "tagName": "i", "attributes": { "class": "bi bi-filetype-json", "aria-hidden": "true" } },
+            { "tagName": "span", "attributes": { "id": "{{fileNameId}}", "class": "pane-file-name" }, "textContent": "{{fileName}}" }
+          ]
+        }
+      ]
+    }
+  ]
+}

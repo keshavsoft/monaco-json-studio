@@ -1,0 +1,10 @@
+{
+  "tagName": "footer",
+  "attributes": {
+    "id": "{{cursorId}}",
+    "class": "pane-region pane-footer pane-footer--cursor",
+    "data-region": "footer",
+    "data-type": "cursor"
+  },
+  "textContent": "Ln 1, Col 1"
+}

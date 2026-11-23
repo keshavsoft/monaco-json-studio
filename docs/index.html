@@ -10,7 +10,7 @@
   <header class="site-header">
     <a href="index.html" class="brand-group">
       <span>⚡ Monaco JSON Studio</span>
-      <span class="brand-badge">v1.3.1</span>
+      <span class="brand-badge">v5 · local preview</span>
     </a>
     <div class="header-links">
       <a href="npx-quickstart.html">NPX CLI</a>
@@ -26,6 +26,7 @@
       <div class="sidebar-heading">Getting Started</div>
       <ul class="sidebar-nav">
         <li><a href="index.html" class="active">📖 Overview & Story</a></li>
+        <li><a href="v5-story.html">✨ v5 Generation Story</a></li>
         <li><a href="npx-quickstart.html">⚡ NPX Quickstart & CLI</a></li>
       </ul>
 
@@ -43,21 +44,26 @@
 
     <main class="docs-content">
       <section class="hero">
-        <div class="hero-tagline">Specification-Driven Studio Generator</div>
-        <h1>Zero-Dependency Physical & Static Monaco JSON Studio</h1>
-        <p>A fast, declarative scaffolding tool that generates 100% static, production-grade Monaco Editor workspaces with 1, 2, or 3 interactive JSON split panes.</p>
+        <div class="hero-tagline">Monaco JSON Studio · v5 source preview</div>
+        <h1>Choose the pane count. Get the whole studio.</h1>
+        <p>A single count generates the shell, the pane layout, and each pane’s header, Monaco body, and footer as a static HTML workspace.</p>
       </section>
+
+      <div class="callout callout-success">
+        <h4>Local source preview</h4>
+        <p>v5 is implemented in this checkout and has not been published. The published npm package remains on its earlier release until a new release is made.</p>
+      </div>
 
       <h2>The Story & Philosophy</h2>
       <p>Modern web development often introduces heavyweight build chains, bundlers, and runtime dependencies just to display and inspect JSON files side-by-side in Monaco Editor. When inspecting configuration files, API responses, schema definitions, or translation tables, developers want <strong>instant physical static files</strong> without orchestrating servers, webpack, or Vite builds.</p>
       
-      <p><strong>@keshavsoft/monaco-json-studio</strong> was built to solve this with a strictly disciplined philosophy:</p>
+      <p><strong>Monaco JSON Studio</strong> keeps the consumer choice small and organizes the generated page into focused internal parts:</p>
 
       <div class="cards-grid">
         <div class="card">
           <div class="card-icon">🚀</div>
           <h3>One-Shot NPX Command</h3>
-          <p>Run a single command with <code>npx</code>, specify how many JSON panes you need (1, 2, or 3), and instantly get a working studio.</p>
+          <p>Run one command and specify the number of panes: 1, 2, or 3.</p>
         </div>
 
         <div class="card">
@@ -69,7 +75,7 @@
         <div class="card">
           <div class="card-icon">🎨</div>
           <h3>Modular Control-Scoped CSS</h3>
-          <p>Scaffolds with clean CSS files (<code>base.css</code>, <code>header.css</code>, <code>workspace.css</code>, <code>footer.css</code>) rather than messy monoliths.</p>
+          <p>Separates page tokens, studio shell, pane grid, and pane-region styles into focused CSS files.</p>
         </div>
 
         <div class="card">
@@ -81,10 +87,10 @@
 
       <h2>Quick NPX Example</h2>
       <pre><code># Instantly generate a 2-Pane Dual JSON Studio
-npx @keshavsoft/monaco-json-studio 2 ./my-dual-studio --title="API Data Diff Studio"
+npx monaco-json-studio 2
 
 # Open the studio in your browser immediately (100% static)
-cd my-dual-studio
+cd monaco-studio
 # Double-click index.html or serve locally:
 npx serve .</code></pre>
 
@@ -102,6 +108,10 @@ npx serve .</code></pre>
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td><a href="v5-story.html"><strong>v5 Generation Story</strong></a></td>
+            <td>The count-only command and how internal header, body, and footer builders compose the page.</td>
+          </tr>
           <tr>
             <td><a href="npx-quickstart.html"><strong>NPX Quickstart & CLI</strong></a></td>
             <td>Command-line options, flags, parameters, and instant folder scaffolding recipes.</td>

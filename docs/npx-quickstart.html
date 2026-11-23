@@ -1,149 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NPX Quickstart & CLI Guide - @keshavsoft/monaco-json-studio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>v5 Command Usage - Monaco JSON Studio</title>
   <link rel="stylesheet" href="docs.css">
+  <style>
+    .release-note { margin:18px 0; padding:16px 18px; border:1px solid rgba(251,191,36,.32); border-radius:10px; background:rgba(251,191,36,.08); color:#e9d8ad; line-height:1.6; }
+    .release-note strong { color:#fff0c2; }
+    .command-card { margin:20px 0; padding:20px; border:1px solid rgba(56,189,248,.24); border-radius:12px; background:linear-gradient(135deg,rgba(56,189,248,.09),rgba(52,211,153,.05)); }
+    .command-card pre { margin:12px 0 0; }
+    .pane-examples { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:18px 0; }
+    .pane-example { padding:16px; border:1px solid rgba(156,163,175,.18); border-radius:10px; background:rgba(255,255,255,.025); }
+    .pane-example span { color:#38bdf8; font:700 11px ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; }
+    .pane-example h3 { margin:8px 0 5px; }
+    .pane-example p { margin:0; color:#aeb9c9; font-size:13px; line-height:1.55; }
+    @media(max-width:700px) { .pane-examples { grid-template-columns:1fr; } }
+  </style>
 </head>
 <body>
   <header class="site-header">
-    <a href="index.html" class="brand-group">
-      <span>⚡ Monaco JSON Studio</span>
-      <span class="brand-badge">v1.3.1</span>
-    </a>
-    <div class="header-links">
-      <a href="npx-quickstart.html">NPX CLI</a>
-      <a href="panes-guide.html">Panes</a>
-      <a href="api-reference.html">API</a>
+    <a href="index.html" class="brand-group"><span>⚡ Monaco JSON Studio</span><span class="brand-badge">v5 source preview</span></a>
+    <nav class="header-links" aria-label="Documentation">
+      <a href="v5-story.html">The v5 story</a>
       <a href="architecture.html">Architecture</a>
-      <a href="https://github.com/keshavsoft/monaco-json-studio" target="_blank" class="btn-github">GitHub ↗</a>
-    </div>
+      <a href="api-reference.html">Earlier API</a>
+    </nav>
   </header>
 
   <div class="docs-layout">
     <aside class="docs-sidebar">
-      <div class="sidebar-heading">Getting Started</div>
+      <div class="sidebar-heading">Run Monaco JSON Studio</div>
       <ul class="sidebar-nav">
-        <li><a href="index.html">📖 Overview & Story</a></li>
-        <li><a href="npx-quickstart.html" class="active">⚡ NPX Quickstart & CLI</a></li>
-      </ul>
-
-      <div class="sidebar-heading">Studio Scaffolding</div>
-      <ul class="sidebar-nav">
-        <li><a href="panes-guide.html">🪟 Multi-Pane Layouts (1-3)</a></li>
-        <li><a href="architecture.html">🏛️ Static Architecture</a></li>
-      </ul>
-
-      <div class="sidebar-heading">Development</div>
-      <ul class="sidebar-nav">
-        <li><a href="api-reference.html">🔧 Programmatic API</a></li>
+        <li><a class="active" href="npx-quickstart.html">One-count command</a></li>
+        <li><a href="v5-story.html">How the generator works</a></li>
+        <li><a href="architecture.html">Generated project files</a></li>
       </ul>
     </aside>
 
     <main class="docs-content">
       <div class="hero">
-        <div class="hero-tagline">Command Line Interface</div>
-        <h1>NPX Quickstart & CLI Guide</h1>
-        <p>Scaffold standalone, production-ready Monaco JSON Studio workspaces anywhere with a single terminal command.</p>
+        <div class="hero-tagline">Monaco JSON Studio · v5</div>
+        <h1>One command. Pick the pane count.</h1>
+        <p>The consumer chooses the workspace size. The generator composes the headers, editor bodies, footers, HTML, and CSS.</p>
       </div>
 
-      <h2>Instant Scaffolding via NPX</h2>
-      <p>You do not need to install the package globally. Run it directly with <code>npx</code>:</p>
+      <div class="release-note"><strong>Local source preview:</strong> v5 is in this repository and has not been published. The command below describes v5. The npm registry continues to serve the previously published release until a new version is released.</div>
 
-      <pre><code># Syntax:
-npx @keshavsoft/monaco-json-studio &lt;panes&gt; [targetDir] [options]</code></pre>
+      <section class="command-card">
+        <h2>Command</h2>
+        <p>Run the package from your project directory. It creates <code>./monaco-studio</code>.</p>
+        <pre><code>npx monaco-json-studio 3</code></pre>
+      </section>
 
-      <h3>Primary Arguments</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Argument</th>
-            <th>Type</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>&lt;panes&gt;</code></td>
-            <td><code>1 | 2 | 3</code></td>
-            <td><strong>Required.</strong> The number of editor panes: 1 (single 100%), 2 (dual 50/50), or 3 (triple 33/33/33).</td>
-          </tr>
-          <tr>
-            <td><code>[targetDir]</code></td>
-            <td><code>string</code></td>
-            <td><strong>Optional.</strong> Destination path (e.g., <code>./my-studio</code> or <code>.</code> for current folder). Defaults to <code>./monaco-studio</code>.</td>
-          </tr>
-        </tbody>
-      </table>
+      <h2>Choose a layout</h2>
+      <div class="pane-examples">
+        <article class="pane-example"><span>One pane</span><h3>Full width</h3><p>Use for one JSON document or a focused viewer.</p><pre><code>npx monaco-json-studio 1</code></pre></article>
+        <article class="pane-example"><span>Two panes</span><h3>Side by side</h3><p>Use for instructions and data, or for comparing two documents.</p><pre><code>npx monaco-json-studio 2</code></pre></article>
+        <article class="pane-example"><span>Three panes</span><h3>Three stages</h3><p>Use for instructions, input data, and an output view.</p><pre><code>npx monaco-json-studio 3</code></pre></article>
+      </div>
 
-      <h3>Supported CLI Flags & Options</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Option</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>--title=&lt;name&gt;</code></td>
-            <td><code>"Monaco Studio"</code></td>
-            <td>Custom branding title rendered in the generated studio header bar.</td>
-          </tr>
-          <tr>
-            <td><code>--panes=&lt;1|2|3&gt;</code></td>
-            <td>-</td>
-            <td>Named argument variant for specifying pane count.</td>
-          </tr>
-          <tr>
-            <td><code>--target=&lt;path&gt;</code></td>
-            <td><code>./monaco-studio</code></td>
-            <td>Named argument variant for specifying target directory.</td>
-          </tr>
-          <tr>
-            <td><code>-h, --help</code></td>
-            <td>-</td>
-            <td>Displays the CLI usage instructions and parameter table.</td>
-          </tr>
-        </tbody>
-      </table>
+      <h2>Try the local checkout</h2>
+      <p>From the cloned repository root, run the source directly:</p>
+      <pre><code>node ./bin/index.js 3</code></pre>
+      <p>The local generator writes the project to <code>./monaco-studio</code>. Serve that folder with a static web server to load Monaco and the sample JSON files.</p>
 
-      <h2>Scaffolding Examples</h2>
-
-      <h3>1. Single Pane JSON Visualizer</h3>
-      <p>Generates a full-width Monaco editor suitable for viewing and formatting a single JSON document:</p>
-      <pre><code>npx @keshavsoft/monaco-json-studio 1 ./single-viewer --title="Config Inspector"</code></pre>
-
-      <h3>2. Dual Pane Split View (50% / 50%)</h3>
-      <p>Generates two side-by-side Monaco editors ideal for diffing API outputs or comparing schemas:</p>
-      <pre><code>npx @keshavsoft/monaco-json-studio 2 ./dual-studio --title="API Response Diff"</code></pre>
-
-      <h3>3. Triple Pane Studio (33% / 33% / 33%)</h3>
-      <p>Generates three side-by-side Monaco editors for complex multi-stage pipelines (e.g., Input Data, Columns Spec, Instructions):</p>
-      <pre><code>npx @keshavsoft/monaco-json-studio 3 ./pipeline-studio --title="ETL Config Studio"</code></pre>
-
-      <h3>4. Scaffold Directly into Current Directory</h3>
-      <pre><code>npx @keshavsoft/monaco-json-studio 2 .</code></pre>
-
-      <h2>Running Locally from Source</h2>
-      <p>If you have cloned or linked this repository locally:</p>
-      <pre><code># Inside the monaco-json-studio repository root:
-node ./bin/index.js 2 ./my-dual-studio
-
-# Test npm run script:
-npm test</code></pre>
+      <h2>What is inside?</h2>
+      <pre><code>monaco-studio/
+├── index.html
+├── css/
+│   ├── base.css
+│   ├── studio.css
+│   ├── pane-layout.css
+│   └── pane-regions.css
+├── data/
+└── js/
+    ├── index.js
+    └── state.js</code></pre>
 
       <div class="callout callout-success">
-        <h4>What Happens After Execution?</h4>
-        <p>The CLI compiles the spec, creates physical folder structures, copies all modular CSS files, copies sample JSON datasets, and generates a pre-rendered <code>index.html</code> with the respective JavaScript controllers. Ready to use immediately!</p>
+        <h4>One public choice, clear internal parts</h4>
+        <p>The pane count drives the workspace. Inside the generator, studio-level header and footer modules frame the page, while each pane is assembled from a pane header, body, and footer. The generated project stays plain HTML and CSS around the Monaco control.</p>
       </div>
+      <p><a href="v5-story.html">Read the v5 generation story →</a></p>
     </main>
   </div>
-
-  <footer class="site-footer">
-    <p>© KeshavSoft. Distributed under the MIT License.</p>
-  </footer>
+  <footer class="site-footer"><p>© KeshavSoft. Distributed under the MIT License.</p></footer>
 </body>
 </html>
