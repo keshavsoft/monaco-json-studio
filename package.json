@@ -1,7 +1,7 @@
 {
   "name": "monaco-json-studio",
-  "version": "1.5.1",
-  "description": "Generate a static Monaco JSON Studio by choosing one, two, or three panes.",
+  "version": "1.7.1",
+  "description": "Generate a static Monaco JSON Studio from a pane count or configuration object.",
   "publishConfig": {
     "access": "public"
   },
@@ -29,7 +29,9 @@
   ],
   "scripts": {
     "test": "node --check src/index.js && node --check bin/index.js",
-    "dev:v6": "vite preview-v6/monaco-studio"
+    "dev:v6": "vite preview-v6/monaco-studio",
+    "demo:v7": "node examples/npm-v7/generate-variations.mjs",
+    "dev:v7": "vite preview-v7 --host 127.0.0.1 --port 5177"
   },
   "keywords": [
     "monaco",

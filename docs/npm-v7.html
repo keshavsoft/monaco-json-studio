@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Use Monaco JSON Studio's v7 npm API with a pane configuration object.">
+  <title>v7 npm object API · Monaco JSON Studio</title>
+  <link rel="stylesheet" href="docs.css">
+  <style>
+    .v7-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin:20px 0; }
+    .v7-card { padding:18px; border:1px solid rgba(148,163,184,.18); border-radius:14px; background:rgba(255,255,255,.025); }
+    .v7-card h3 { margin:0 0 8px; }
+    .v7-card p { margin:0; color:#aeb9c9; font-size:14px; line-height:1.6; }
+    .v7-status { margin:18px 0; padding:16px 18px; border:1px solid rgba(251,191,36,.3); border-radius:12px; background:rgba(251,191,36,.07); color:#e9d8ad; line-height:1.6; }
+    .v7-status strong { color:#fff0c2; }
+    pre { overflow:auto; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="brand-group"><span>⚡ Monaco JSON Studio</span><span class="brand-badge">v7 · npm API preview</span></a>
+    <nav class="header-links" aria-label="Documentation">
+      <a href="npx-quickstart.html">Existing npx command</a>
+      <a href="v6-story.html">v6 templates</a>
+      <a href="architecture.html">Architecture</a>
+    </nav>
+  </header>
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <div class="sidebar-heading">v7 Node usage</div>
+      <ul class="sidebar-nav">
+        <li><a href="#contract">The object</a></li>
+        <li><a href="#regions">Region controls</a></li>
+        <li><a href="#examples">Runnable variations</a></li>
+        <li><a href="#ids">Generated IDs</a></li>
+      </ul>
+    </aside>
+    <main class="docs-content">
+      <section class="hero">
+        <div class="hero-tagline">A richer npm interface · the same generated studio</div>
+        <h1>Describe panes with an object.</h1>
+        <p>Use npm from JavaScript when a studio needs custom labels, files, controls, and starting data. The generator turns the object into the same static HTML, CSS, and browser-side Monaco project.</p>
+      </section>
+
+      <div class="v7-status"><strong>Local source preview:</strong> v7 is implemented in this checkout and has not been published. The existing npx command remains the pane-count command. The published package does not yet expose this named API.</div>
+
+      <section id="contract">
+        <h2>One config object</h2>
+        <p>Install the package after the v7 API is released, then import the named function:</p>
+        <pre><code>import { createStudio } from 'monaco-json-studio';
+
+createStudio({
+  title: 'Dataset Review',
+  outputDir: './dataset-review',
+  panes: [
+    {
+      key: 'catalog',
+      label: 'Catalog',
+      header: {
+        type: 'select',
+        options: [
+          { label: 'Fasteners', value: 'fasteners', content: [{ item: 'Bolt' }] },
+          { label: 'Electrical', value: 'electrical', content: [{ item: 'Cable' }] }
+        ]
+      },
+      body: { type: 'monaco', language: 'json' },
+      footer: { type: 'note', text: 'Choose a dataset above.' }
+    }
+  ]
+});</code></pre>
+        <p><code>outputDir</code> is relative to the process working directory and defaults to <code>./monaco-studio</code>. A studio supports one, two, or three panes.</p>
+      </section>
+
+      <section id="regions">
+        <h2>Choose a control for each region</h2>
+        <div class="v7-grid">
+          <article class="v7-card"><h3>Header</h3><p><code>file-picker</code> opens a local file, <code>title</code> shows the pane label, <code>select</code> switches the Monaco content between options, and <code>none</code> leaves the region empty.</p></article>
+          <article class="v7-card"><h3>Body</h3><p><code>monaco</code> creates an editor with the requested language and initial JSON value. The file name and initial value can be set in the body.</p></article>
+          <article class="v7-card"><h3>Footer</h3><p><code>cursor</code> displays the current position, <code>note</code> shows a short message, and <code>none</code> omits the pane footer.</p></article>
+        </div>
+        <p>A select header needs options with unique values and JSON content. Its first option is selected by default; set <code>selectedValue</code> to choose another.</p>
+      </section>
+
+      <section id="examples">
+        <h2>Three runnable variations</h2>
+        <p>The checkout includes a one-pane quick desk, a two-pane dataset review, and a three-pane data pipeline. The last two use the functional select control.</p>
+        <pre><code>npm run demo:v7
+npm run dev:v7</code></pre>
+        <p>Then open <a href="http://localhost:5177/">the v7 examples index</a>. The source examples are in <code>examples/npm-v7/generate-variations.mjs</code>.</p>
+      </section>
+
+      <section id="ids">
+        <h2>Use logical keys, not hand-written DOM IDs</h2>
+        <p>Each pane needs a unique <code>key</code>. The generator derives editor, file-picker, selector, and cursor IDs from the pane’s position. Browser behavior connects through the generated pane config, so the consumer does not repeat IDs in the object.</p>
+        <p>The public package root keeps the default count-based generator for the existing CLI and adds <code>createStudio</code> as a named npm API.</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
