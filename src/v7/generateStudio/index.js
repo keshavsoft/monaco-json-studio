@@ -43,7 +43,7 @@ function generateStudio(config) {
 
     const runtimeJsDir = path.join(assetsDir, 'v7', 'templates', 'js');
     fs.readdirSync(runtimeJsDir)
-        .filter((file) => file.endsWith('.js'))
+        .filter((file) => file.endsWith('.js') || file.endsWith('.json'))
         .forEach((file) => fs.copyFileSync(path.join(runtimeJsDir, file), path.join(jsDir, file)));
 
     return targetDir;

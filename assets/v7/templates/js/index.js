@@ -1,7 +1,9 @@
+import { bindEvents } from 'https://keshavsoft.github.io/dom-primitive-bindings/dist/v7/min.js';
+import bindings from './bindings.json' with { type: 'json' };
+import actions from './actions.js';
 import { paneConfigs, state } from './state.js';
 import { byId, setStatus } from './dom.js';
 import { loadMonaco, loadInitialValue, updateCursor } from './monaco.js';
-import { bindPaneHeader } from './bindings.js';
 
 const commonOptions = {
     theme: 'vs-dark',
@@ -31,8 +33,6 @@ async function initPane(monaco, pane) {
     state.editors[pane.paneNumber - 1] = editor;
     state.contents[pane.paneNumber - 1] = initialValue;
 
-    bindPaneHeader(pane, editor);
-
     const update = () => updateCursor(editor, pane);
     editor.onDidFocusEditorText(update);
     editor.onDidChangeCursorPosition(update);
@@ -52,6 +52,10 @@ async function start() {
     }
 
     await Promise.all(paneConfigs.map((pane) => initPane(monaco, pane)));
+
+    const workspace = document.querySelector('.studio-workspace');
+    bindEvents(workspace, bindings, actions);
+
     setStatus('Ready ✓');
 }
 
