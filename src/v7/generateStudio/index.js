@@ -41,8 +41,10 @@ function generateStudio(config) {
     ].join('\n');
     fs.writeFileSync(path.join(jsDir, 'state.js'), stateModule, 'utf8');
 
-    const runtimeSource = fs.readFileSync(path.join(assetsDir, 'v7', 'templates', 'index.js'), 'utf8');
-    fs.writeFileSync(path.join(jsDir, 'index.js'), runtimeSource, 'utf8');
+    const runtimeJsDir = path.join(assetsDir, 'v7', 'templates', 'js');
+    fs.readdirSync(runtimeJsDir)
+        .filter((file) => file.endsWith('.js'))
+        .forEach((file) => fs.copyFileSync(path.join(runtimeJsDir, file), path.join(jsDir, file)));
 
     return targetDir;
 }
