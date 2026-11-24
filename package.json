@@ -1,6 +1,6 @@
 {
   "name": "monaco-json-studio",
-  "version": "1.7.5",
+  "version": "1.8.1",
   "description": "Generate a static Monaco JSON Studio from a pane count or configuration object.",
   "publishConfig": {
     "access": "public"

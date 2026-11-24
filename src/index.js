@@ -1,3 +1,3 @@
-export { default } from './v7/index.js';
+export { default } from './v8/index.js';
 
-export { createStudio } from './v7/index.js';
+export { createStudio } from './v8/index.js';
