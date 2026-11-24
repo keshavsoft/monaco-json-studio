@@ -5,7 +5,7 @@ const args = process.argv.slice(2);
 
 function showHelp() {
     console.log(`
-Monaco JSON Studio v6
+Monaco JSON Studio
 
 Create a static studio by choosing its pane count:
 
@@ -32,9 +32,18 @@ if (args.length !== 1 || !/^[123]$/.test(args[0])) {
 }
 
 const paneCount = Number(args[0]);
+const panes = Array.from({ length: paneCount }, (_, index) => ({
+    key: `pane${index + 1}`,
+    label: `Pane ${index + 1}`,
+    body: { type: 'monaco', language: 'json' }
+}));
+
 try {
-    const targetDir = generateStudio(paneCount);
-    console.log(`Generated Monaco Studio v6 with ${paneCount} pane${paneCount === 1 ? '' : 's'}.`);
+    const targetDir = generateStudio({
+        outputDir: './monaco-studio',
+        panes
+    });
+    console.log(`Generated Monaco Studio with ${paneCount} pane${paneCount === 1 ? '' : 's'}.`);
     console.log(`Open: ${targetDir}/index.html`);
 } catch (error) {
     console.error(`Could not generate Monaco Studio: ${error.message}`);
