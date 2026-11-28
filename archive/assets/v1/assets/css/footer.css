@@ -1,0 +1,27 @@
+.studio-footer {
+    height: 24px;
+    background-color: var(--bg-footer);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    flex-shrink: 0;
+}
+
+.footer-left, .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent-blue);
+    font-weight: 600;
+}

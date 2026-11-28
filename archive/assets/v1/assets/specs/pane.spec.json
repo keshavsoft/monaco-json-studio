@@ -1,0 +1,99 @@
+{
+  "tagName": "section",
+  "attributes": {
+    "class": "studio-pane",
+    "id": "{{paneId}}"
+  },
+  "children": [
+    {
+      "tagName": "div",
+      "attributes": {
+        "class": "pane-header"
+      },
+      "children": [
+        {
+          "tagName": "div",
+          "attributes": {
+            "class": "pane-header-left"
+          },
+          "children": [
+            {
+              "tagName": "span",
+              "attributes": {
+                "class": "pane-badge"
+              },
+              "textContent": "{{badgeText}}"
+            },
+            {
+              "tagName": "button",
+              "attributes": {
+                "id": "{{fileBtnId}}",
+                "type": "button",
+                "class": "btn-pane-file",
+                "title": "Open JSON file for {{badgeText}}"
+              },
+              "children": [
+                {
+                  "tagName": "i",
+                  "attributes": {
+                    "class": "bi bi-folder2-open"
+                  }
+                },
+                {
+                  "tagName": "span",
+                  "textContent": "Select File"
+                }
+              ]
+            },
+            {
+              "tagName": "input",
+              "attributes": {
+                "type": "file",
+                "id": "{{fileInputId}}",
+                "style": "display: none;",
+                "accept": ".json,.js,.txt,application/json"
+              }
+            }
+          ]
+        },
+        {
+          "tagName": "div",
+          "attributes": {
+            "class": "pane-header-right"
+          },
+          "children": [
+            {
+              "tagName": "span",
+              "attributes": {
+                "class": "pane-file-pill"
+              },
+              "children": [
+                {
+                  "tagName": "i",
+                  "attributes": {
+                    "class": "bi bi-filetype-json"
+                  }
+                },
+                {
+                  "tagName": "span",
+                  "attributes": {
+                    "id": "{{fileNameId}}",
+                    "class": "pane-file-name"
+                  },
+                  "textContent": "{{defaultFileName}}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tagName": "div",
+      "attributes": {
+        "id": "{{editorId}}",
+        "class": "editor-pane-body"
+      }
+    }
+  ]
+}

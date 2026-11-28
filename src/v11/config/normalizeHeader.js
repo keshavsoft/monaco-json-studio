@@ -1,4 +1,4 @@
-import { jsonText, requireObject, requireText, validateFileName } from './validators.js';
+import { jsonText, normalizeDataLocation, requireObject, requireText } from './validators.js';
 
 export const HEADER_TYPES = new Set(['file-picker', 'title', 'select', 'none']);
 const selectValuePattern = /^[A-Za-z0-9][A-Za-z0-9_-]*$/;
@@ -27,7 +27,7 @@ function normalizeSelectOptions({ inOptions, inPaneKey, inLocation }) {
         }
         localUsedValues.add(localValue);
 
-        const localFileName = validateFileName(
+        const localDataLocation = normalizeDataLocation(
             localOption.fileName ?? `${localPaneKey}-${localValue}.json`,
             `${localOptionLocation}.fileName`
         );
@@ -35,7 +35,7 @@ function normalizeSelectOptions({ inOptions, inPaneKey, inLocation }) {
         return {
             label: localLabel,
             value: localValue,
-            fileName: localFileName,
+            ...localDataLocation,
             contentText: localContentText
         };
     });

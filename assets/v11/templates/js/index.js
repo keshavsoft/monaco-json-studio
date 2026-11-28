@@ -24,7 +24,7 @@ async function initPane(monaco, pane) {
     const container = byId(`editor${pane.paneNumber}`);
     if (!container) return;
 
-    const initialValue = await loadInitialValue(pane.fileName);
+    const initialValue = await loadInitialValue(pane.fetchUrl);
     const editor = monaco.editor.create(container, {
         ...commonOptions,
         language: pane.language,

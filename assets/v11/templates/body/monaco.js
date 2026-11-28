@@ -19,6 +19,6 @@ export async function loadInitialValue(fetchUrl) {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return pretty(await response.text());
     } catch {
-        return pretty({ message: `Default content for ${fileName}` });
+        return pretty({ message: `Default content for ${fetchUrl}` });
     }
 };

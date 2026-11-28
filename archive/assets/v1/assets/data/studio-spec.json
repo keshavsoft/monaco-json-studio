@@ -1,0 +1,525 @@
+{
+  "tagName": "div",
+  "attributes": {
+    "class": "studio-app"
+  },
+  "children": [
+    {
+      "tagName": "header",
+      "attributes": {
+        "class": "studio-header"
+      },
+      "children": [
+        {
+          "tagName": "div",
+          "attributes": {
+            "class": "header-left"
+          },
+          "children": [
+            {
+              "tagName": "a",
+              "attributes": {
+                "href": "../../index.html",
+                "class": "brand-link",
+                "title": "Back to Docs"
+              },
+              "children": [
+                {
+                  "tagName": "i",
+                  "attributes": {
+                    "class": "bi bi-cpu-fill brand-icon"
+                  }
+                },
+                {
+                  "tagName": "span",
+                  "textContent": "json-renderers-run-instructions-steps"
+                },
+                {
+                  "tagName": "span",
+                  "attributes": {
+                    "class": "version-pill"
+                  },
+                  "textContent": "v3"
+                }
+              ]
+            },
+            {
+              "tagName": "div",
+              "attributes": {
+                "class": "header-divider"
+              }
+            },
+            {
+              "tagName": "div",
+              "attributes": {
+                "class": "layout-switcher"
+              },
+              "children": [
+                {
+                  "tagName": "span",
+                  "attributes": {
+                    "class": "layout-switcher-label"
+                  },
+                  "textContent": "Panes:"
+                },
+                {
+                  "tagName": "button",
+                  "attributes": {
+                    "type": "button",
+                    "class": "btn-layout-mode",
+                    "data-panes": "1",
+                    "title": "Single Pane (100%)"
+                  },
+                  "textContent": "1"
+                },
+                {
+                  "tagName": "button",
+                  "attributes": {
+                    "type": "button",
+                    "class": "btn-layout-mode active",
+                    "data-panes": "2",
+                    "title": "Double Pane (50/50)"
+                  },
+                  "textContent": "2"
+                },
+                {
+                  "tagName": "button",
+                  "attributes": {
+                    "type": "button",
+                    "class": "btn-layout-mode",
+                    "data-panes": "3",
+                    "title": "Triple Pane (33/33/33)"
+                  },
+                  "textContent": "3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tagName": "div",
+          "attributes": {
+            "class": "header-right"
+          },
+          "children": [
+            {
+              "tagName": "span",
+              "attributes": {
+                "id": "statusPill",
+                "class": "status-pill success hidden"
+              },
+              "children": [
+                {
+                  "tagName": "i",
+                  "attributes": {
+                    "class": "bi bi-check2"
+                  }
+                },
+                {
+                  "tagName": "span",
+                  "attributes": {
+                    "id": "statusText"
+                  },
+                  "textContent": "Loaded ✓"
+                }
+              ]
+            },
+            {
+              "tagName": "div",
+              "attributes": {
+                "class": "header-divider"
+              }
+            },
+            {
+              "tagName": "a",
+              "attributes": {
+                "href": "../../index.html",
+                "class": "docs-link",
+                "title": "Documentation Hub"
+              },
+              "children": [
+                {
+                  "tagName": "i",
+                  "attributes": {
+                    "class": "bi bi-arrow-left"
+                  }
+                },
+                {
+                  "tagName": "span",
+                  "textContent": "Docs"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tagName": "main",
+      "attributes": {
+        "class": "studio-workspace",
+        "id": "studioWorkspace",
+        "data-panes": "2"
+      },
+      "children": [
+        {
+          "tagName": "section",
+          "attributes": {
+            "class": "studio-pane",
+            "id": "pane1"
+          },
+          "children": [
+            {
+              "tagName": "div",
+              "attributes": {
+                "class": "pane-header"
+              },
+              "children": [
+                {
+                  "tagName": "div",
+                  "attributes": {
+                    "class": "pane-header-left"
+                  },
+                  "children": [
+                    {
+                      "tagName": "span",
+                      "attributes": {
+                        "class": "pane-badge"
+                      },
+                      "textContent": "Editor 1"
+                    },
+                    {
+                      "tagName": "button",
+                      "attributes": {
+                        "id": "openFileBtn1",
+                        "type": "button",
+                        "class": "btn-pane-file",
+                        "title": "Open JSON file for Editor 1"
+                      },
+                      "children": [
+                        {
+                          "tagName": "i",
+                          "attributes": {
+                            "class": "bi bi-folder2-open"
+                          }
+                        },
+                        {
+                          "tagName": "span",
+                          "textContent": "Select File"
+                        }
+                      ]
+                    },
+                    {
+                      "tagName": "input",
+                      "attributes": {
+                        "type": "file",
+                        "id": "fileInput1",
+                        "style": "display: none;",
+                        "accept": ".json,.js,.txt,application/json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "tagName": "div",
+                  "attributes": {
+                    "class": "pane-header-right"
+                  },
+                  "children": [
+                    {
+                      "tagName": "span",
+                      "attributes": {
+                        "class": "pane-file-pill"
+                      },
+                      "children": [
+                        {
+                          "tagName": "i",
+                          "attributes": {
+                            "class": "bi bi-filetype-json"
+                          }
+                        },
+                        {
+                          "tagName": "span",
+                          "attributes": {
+                            "id": "fileName1",
+                            "class": "pane-file-name"
+                          },
+                          "textContent": "instructions.json"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "tagName": "div",
+              "attributes": {
+                "id": "editor1",
+                "class": "editor-pane-body"
+              }
+            }
+          ]
+        },
+        {
+          "tagName": "section",
+          "attributes": {
+            "class": "studio-pane",
+            "id": "pane2"
+          },
+          "children": [
+            {
+              "tagName": "div",
+              "attributes": {
+                "class": "pane-header"
+              },
+              "children": [
+                {
+                  "tagName": "div",
+                  "attributes": {
+                    "class": "pane-header-left"
+                  },
+                  "children": [
+                    {
+                      "tagName": "span",
+                      "attributes": {
+                        "class": "pane-badge"
+                      },
+                      "textContent": "Editor 2"
+                    },
+                    {
+                      "tagName": "button",
+                      "attributes": {
+                        "id": "openFileBtn2",
+                        "type": "button",
+                        "class": "btn-pane-file",
+                        "title": "Open JSON file for Editor 2"
+                      },
+                      "children": [
+                        {
+                          "tagName": "i",
+                          "attributes": {
+                            "class": "bi bi-folder2-open"
+                          }
+                        },
+                        {
+                          "tagName": "span",
+                          "textContent": "Select File"
+                        }
+                      ]
+                    },
+                    {
+                      "tagName": "input",
+                      "attributes": {
+                        "type": "file",
+                        "id": "fileInput2",
+                        "style": "display: none;",
+                        "accept": ".json,.js,.txt,application/json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "tagName": "div",
+                  "attributes": {
+                    "class": "pane-header-right"
+                  },
+                  "children": [
+                    {
+                      "tagName": "span",
+                      "attributes": {
+                        "class": "pane-file-pill"
+                      },
+                      "children": [
+                        {
+                          "tagName": "i",
+                          "attributes": {
+                            "class": "bi bi-filetype-json"
+                          }
+                        },
+                        {
+                          "tagName": "span",
+                          "attributes": {
+                            "id": "fileName2",
+                            "class": "pane-file-name"
+                          },
+                          "textContent": "data.json"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "tagName": "div",
+              "attributes": {
+                "id": "editor2",
+                "class": "editor-pane-body"
+              }
+            }
+          ]
+        },
+        {
+          "tagName": "section",
+          "attributes": {
+            "class": "studio-pane",
+            "id": "pane3"
+          },
+          "children": [
+            {
+              "tagName": "div",
+              "attributes": {
+                "class": "pane-header"
+              },
+              "children": [
+                {
+                  "tagName": "div",
+                  "attributes": {
+                    "class": "pane-header-left"
+                  },
+                  "children": [
+                    {
+                      "tagName": "span",
+                      "attributes": {
+                        "class": "pane-badge"
+                      },
+                      "textContent": "Editor 3"
+                    },
+                    {
+                      "tagName": "button",
+                      "attributes": {
+                        "id": "openFileBtn3",
+                        "type": "button",
+                        "class": "btn-pane-file",
+                        "title": "Open JSON file for Editor 3"
+                      },
+                      "children": [
+                        {
+                          "tagName": "i",
+                          "attributes": {
+                            "class": "bi bi-folder2-open"
+                          }
+                        },
+                        {
+                          "tagName": "span",
+                          "textContent": "Select File"
+                        }
+                      ]
+                    },
+                    {
+                      "tagName": "input",
+                      "attributes": {
+                        "type": "file",
+                        "id": "fileInput3",
+                        "style": "display: none;",
+                        "accept": ".json,.js,.txt,application/json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "tagName": "div",
+                  "attributes": {
+                    "class": "pane-header-right"
+                  },
+                  "children": [
+                    {
+                      "tagName": "span",
+                      "attributes": {
+                        "class": "pane-file-pill"
+                      },
+                      "children": [
+                        {
+                          "tagName": "i",
+                          "attributes": {
+                            "class": "bi bi-filetype-json"
+                          }
+                        },
+                        {
+                          "tagName": "span",
+                          "attributes": {
+                            "id": "fileName3",
+                            "class": "pane-file-name"
+                          },
+                          "textContent": "columns.json"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "tagName": "div",
+              "attributes": {
+                "id": "editor3",
+                "class": "editor-pane-body"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tagName": "footer",
+      "attributes": {
+        "class": "studio-footer"
+      },
+      "children": [
+        {
+          "tagName": "div",
+          "attributes": {
+            "class": "footer-left"
+          },
+          "children": [
+            {
+              "tagName": "span",
+              "attributes": {
+                "class": "footer-brand"
+              },
+              "children": [
+                {
+                  "tagName": "i",
+                  "attributes": {
+                    "class": "bi bi-layout-split"
+                  }
+                },
+                {
+                  "tagName": "span",
+                  "textContent": "Monaco Dynamic Studio"
+                }
+              ]
+            },
+            {
+              "tagName": "span",
+              "textContent": "|"
+            },
+            {
+              "tagName": "span",
+              "attributes": {
+                "id": "layoutMeta"
+              },
+              "textContent": "2 Panes Active"
+            }
+          ]
+        },
+        {
+          "tagName": "div",
+          "attributes": {
+            "class": "footer-right"
+          },
+          "children": [
+            {
+              "tagName": "span",
+              "attributes": {
+                "id": "cursorPos"
+              },
+              "textContent": "Ln 1, Col 1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

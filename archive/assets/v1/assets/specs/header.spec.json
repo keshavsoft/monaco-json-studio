@@ -1,0 +1,97 @@
+{
+  "tagName": "header",
+  "attributes": {
+    "class": "studio-header"
+  },
+  "children": [
+    {
+      "tagName": "div",
+      "attributes": {
+        "class": "header-left"
+      },
+      "children": [
+        {
+          "tagName": "a",
+          "attributes": {
+            "href": "#",
+            "class": "brand-link",
+            "title": "Monaco Studio"
+          },
+          "children": [
+            {
+              "tagName": "i",
+              "attributes": {
+                "class": "bi bi-cpu-fill brand-icon"
+              }
+            },
+            {
+              "tagName": "span",
+              "textContent": "Monaco Studio"
+            },
+            {
+              "tagName": "span",
+              "attributes": {
+                "class": "version-pill"
+              },
+              "textContent": "v2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tagName": "div",
+      "attributes": {
+        "class": "header-right"
+      },
+      "children": [
+        {
+          "tagName": "span",
+          "attributes": {
+            "id": "statusPill",
+            "class": "status-pill success"
+          },
+          "children": [
+            {
+              "tagName": "i",
+              "attributes": {
+                "class": "bi bi-check2"
+              }
+            },
+            {
+              "tagName": "span",
+              "attributes": {
+                "id": "statusText"
+              },
+              "textContent": "Ready ✓"
+            }
+          ]
+        },
+        {
+          "tagName": "div",
+          "attributes": {
+            "class": "header-divider"
+          }
+        },
+        {
+          "tagName": "span",
+          "attributes": {
+            "class": "pane-file-pill"
+          },
+          "children": [
+            {
+              "tagName": "i",
+              "attributes": {
+                "class": "bi bi-layout-split"
+              }
+            },
+            {
+              "tagName": "span",
+              "textContent": "3 Panes Static Layout"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

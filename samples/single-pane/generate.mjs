@@ -15,7 +15,7 @@ const outputDir = createStudio({
             body: {
                 type: 'monaco',
                 language: 'json',
-                fileName: './Data/input.json',
+                fileName: 'https://keshavsoft.github.io/declarative-definitions/json/v6/definitions.json',
                 content: {
                     customer: 'Asha',
                     items: ['notebook', 'pen']

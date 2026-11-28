@@ -32,3 +32,23 @@ export function validateFileName(fileName, location) {
     }
     return result;
 }
+
+export function normalizeDataLocation(value, location, fallback) {
+    const localDataLocation = requireText(value, location, fallback);
+    const hasExplicitPath = /[\\/]/.test(localDataLocation);
+
+    if (hasExplicitPath) {
+        return {
+            fileName: localDataLocation,
+            fetchUrl: localDataLocation,
+            writeToDataDir: false
+        };
+    }
+
+    const localFileName = validateFileName(localDataLocation, location);
+    return {
+        fileName: localFileName,
+        fetchUrl: `./data/${encodeURIComponent(localFileName)}`,
+        writeToDataDir: true
+    };
+}

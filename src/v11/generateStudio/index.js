@@ -78,8 +78,14 @@ function preparePaneRuntimeConfigs({ inPanes }) {
             key: localPaneConfig.key,
             label: localPaneConfig.label,
             fileName: localBodyConfig.fileName,
+            fetchUrl: localBodyConfig.fetchUrl,
             headerType: localHeaderConfig.type,
-            selectOptions: localHeaderConfig.options ?? [],
+            selectOptions: (localHeaderConfig.options ?? []).map((option) => ({
+                label: option.label,
+                value: option.value,
+                fileName: option.fileName,
+                fetchUrl: option.fetchUrl
+            })),
             bodyType: localBodyConfig.type,
             language: localBodyConfig.language,
             footerType: localFooterConfig.type

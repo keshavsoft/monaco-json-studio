@@ -51,8 +51,12 @@ export function normalizeStudioConfig(inRawConfig) {
             inLocation: `${localPaneLocation}.footer`
         });
         const localDataFiles = localHeaderConfig.type === 'select'
-            ? localHeaderConfig.options.map((option) => ({ fileName: option.fileName, contentText: option.contentText }))
-            : [{ fileName: localBodyConfig.fileName, contentText: localBodyConfig.contentText }];
+            ? localHeaderConfig.options
+                .filter((option) => option.writeToDataDir)
+                .map((option) => ({ fileName: option.fileName, contentText: option.contentText }))
+            : localBodyConfig.writeToDataDir
+                ? [{ fileName: localBodyConfig.fileName, contentText: localBodyConfig.contentText }]
+                : [];
 
         return {
             paneNumber: localPaneNumber,

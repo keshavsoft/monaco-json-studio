@@ -1,0 +1,45 @@
+:root {
+    --bg-page: #0f1117;
+    --bg-header: #181a20;
+    --bg-editor: #1e1e1e;
+    --bg-footer: #12141a;
+    --border-color: #2b2f3a;
+    --border-subtle: #232733;
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --accent-blue: #38bdf8;
+    --accent-blue-bg: rgba(56, 189, 248, 0.12);
+    --accent-blue-border: rgba(56, 189, 248, 0.35);
+    --accent-green: #34d399;
+    --accent-green-bg: rgba(52, 211, 153, 0.12);
+    --accent-green-border: rgba(52, 211, 153, 0.35);
+    --accent-amber: #fbbf24;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    overflow: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.studio-app {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}

@@ -47,7 +47,7 @@ export const actions = {
         if (!option) return;
 
         const fileName = byId(`fileName${pane.paneNumber}`);
-        const value = await loadInitialValue(option.fileName);
+        const value = await loadInitialValue(option.fetchUrl);
         editor.setValue(value);
         if (fileName) fileName.textContent = option.fileName;
         state.contents[pane.paneNumber - 1] = value;
