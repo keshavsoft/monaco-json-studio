@@ -3,9 +3,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Handlebars from 'handlebars';
 
+const assetsDirVersion = 'v11';
+
 const moduleDir = path.dirname(fileURLToPath(import.meta.url));
-export const assetsDir = path.resolve(moduleDir, '..', '..', '..', 'assets');
-const templatesDir = path.join(assetsDir, 'v10', 'templates');
+export const assetsDir = path.resolve(moduleDir, '..', '..', '..', 'assets', assetsDirVersion);
+export const templatesDir = path.join(assetsDir, 'templates');
 const compiledTemplates = new Map();
 
 export function renderTemplate(templateName, values = {}) {

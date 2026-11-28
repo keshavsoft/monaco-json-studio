@@ -29,7 +29,7 @@ function writeStudioPage({ inTargetDir, inPageHtml }) {
 
 function copyStudioStyles({ inCssDir }) {
     const localCssDir = inCssDir;
-    const localSourceDir = path.join(assetsDir, 'v10', 'css');
+    const localSourceDir = path.join(assetsDir, 'css');
     cssFiles.forEach((inFileName) => {
         const localFileName = inFileName;
         fs.copyFileSync(path.join(localSourceDir, localFileName), path.join(localCssDir, localFileName));

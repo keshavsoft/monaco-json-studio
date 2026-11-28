@@ -32,7 +32,7 @@ function copyJavaScriptFiles({ inSourceDir, inTargetDir, inExtensions }) {
 
 function copyBrowserRuntime({ inJsDir }) {
     const localJsDir = inJsDir;
-    const localTemplatesDir = path.join(assetsDir, 'v10', 'templates');
+    const localTemplatesDir = path.join(assetsDir, 'templates');
     copyJavaScriptFiles({
         inSourceDir: path.join(localTemplatesDir, 'js'),
         inTargetDir: localJsDir,

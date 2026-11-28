@@ -15,7 +15,7 @@ const outputDir = createStudio({
             body: {
                 type: 'monaco',
                 language: 'json',
-                fileName: 'input.json',
+                fileName: './Data/input.json',
                 content: {
                     customer: 'Asha',
                     items: ['notebook', 'pen']
