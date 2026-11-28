@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import createStudio from '../src/index.js';
+import { createStudio } from '../src/index.js';
 
 const args = process.argv.slice(2);
 
@@ -14,6 +14,8 @@ Create a studio with a pane count and optional output folder:
 Defaults:
   pane count : 1
   folder     : ./monaco-studio
+
+If the output folder already exists, generation stops. Choose another folder or remove the existing one.
 
 Examples:
   npx monaco-json-studio

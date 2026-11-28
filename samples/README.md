@@ -9,4 +9,4 @@ npm ci
 npm run samples
 ```
 
-Run one sample with `npm run sample:1`, `npm run sample:2`, or `npm run sample:3`. Each writes to its own `generated/` folder. Existing folders are reused and refreshed.
+Run one sample with `npm run sample:1`, `npm run sample:2`, or `npm run sample:3`. Each writes to its own `generated/` folder. If you run a sample again, remove its existing `generated/` folder first; V12 stops rather than overwrite it.

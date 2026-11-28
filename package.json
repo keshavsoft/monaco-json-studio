@@ -1,6 +1,6 @@
 {
   "name": "monaco-json-studio",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "description": "Generate a static Monaco Studio from a pane count and output folder.",
   "publishConfig": {
     "access": "public"
@@ -29,7 +29,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "node --check src/index.js && node --check src/v12/index.js && node --check bin/index.js",
+    "test": "node --check src/index.js && node --check src/v12/index.js && node --check src/v12/validateInputs/index.js && node --check src/v12/createPanes/index.js && node --check bin/index.js",
     "sample:1": "node samples/single-pane/generate.mjs",
     "sample:2": "node samples/two-panes/generate.mjs",
     "sample:3": "node samples/three-panes/generate.mjs",

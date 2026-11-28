@@ -5,24 +5,16 @@ Monaco JSON Studio creates a static editor studio. Its public API has two inputs
 ## Use with NPM
 
 ```js
-import createStudio from 'monaco-json-studio';
+import { createStudio } from 'monaco-json-studio';
 
 createStudio();                       // 1 pane in ./monaco-studio
 createStudio(2);                      // 2 panes in ./monaco-studio
 createStudio(3, './review-studio');   // 3 panes in ./review-studio
 ```
 
-The named export works too:
+`createStudio` is the package's single public function. It returns the generated folder path and a status message.
 
-```js
-import { createStudio } from 'monaco-json-studio';
-
-const result = createStudio(2, './review-studio');
-console.log(result.message);
-console.log(result.folderPath);
-```
-
-Pane count must be `1`, `2`, or `3`. If omitted, it defaults to `1`. The folder defaults to `./monaco-studio`. A missing folder is created; an existing folder is reused and its generated files are refreshed.
+Pane count must be `1`, `2`, or `3`. If omitted, it defaults to `1`. The folder defaults to `./monaco-studio`. V12 creates a missing folder. If the folder already exists, it stops with an error before generating any files; choose another folder or remove the existing one first.
 
 ## Use with NPX
 
@@ -32,7 +24,7 @@ npx monaco-json-studio 2
 npx monaco-json-studio 3 ./review-studio
 ```
 
-The first argument is pane count; the second is the output folder name or path. Both are optional.
+The first argument is pane count; the second is the output folder name or path. Both are optional. If the output folder is already present, the command stops and reports the conflict.
 
 ## Run local samples
 
@@ -41,16 +33,16 @@ npm ci
 npm run samples
 ```
 
-The samples call the same two-input API and write into their own `generated/` folders.
+The samples call the same two-input API and write into their own `generated/` folders. Remove a sample's existing `generated/` folder before running that sample again.
 
 ## Generation story
 
-V12 follows a short sequence:
+V12 follows the work in order:
 
-1. Validate the pane count and folder name.
-2. Check the output folder; create it when it is missing.
-3. Build the studio page and the requested number of panes.
-4. Copy V12 styles and browser runtime files.
-5. Return the output path and folder status.
+1. `validateInputs/` checks pane count and output folder name.
+2. `createPanes/` creates the standard pane definitions.
+3. `generateStudio/` stops if the output folder already exists, then creates it.
+4. `buildStudioUi/` builds the studio header, pane workspace, and footer.
+5. `wireStudioJavaScript/` writes pane runtime state and copies browser code; V12 styles are copied alongside it.
 
-The implementation and its assets live in `src/v12/` and `assets/v12/`.
+The matching V12 implementation and browser assets live in `src/v12/` and `assets/v12/`.

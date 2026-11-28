@@ -9,19 +9,17 @@ const cssFiles = ['base.css', 'studio.css', 'pane-layout.css', 'pane-regions.css
 function createOutputFolder({ inFolderName }) {
     const localFolderName = inFolderName;
     const localTargetDir = path.resolve(process.cwd(), localFolderName);
-    const localFolderAlreadyExisted = fs.existsSync(localTargetDir);
+    const localFolderAlreadyExists = fs.existsSync(localTargetDir);
 
-    if (localFolderAlreadyExisted && !fs.statSync(localTargetDir).isDirectory()) {
-        throw new TypeError(`Output folder path is not a directory: ${localTargetDir}`);
-    }
-    if (!localFolderAlreadyExisted) {
-        fs.mkdirSync(localTargetDir, { recursive: true });
+    if (localFolderAlreadyExists) {
+        if (!fs.statSync(localTargetDir).isDirectory()) {
+            throw new Error(`Output path exists and is not a folder: ${localTargetDir}`);
+        }
+        throw new Error(`Output folder is already present: ${localTargetDir}. Generation stopped.`);
     }
 
-    return {
-        targetDir: localTargetDir,
-        folderAlreadyExisted: localFolderAlreadyExisted
-    };
+    fs.mkdirSync(localTargetDir, { recursive: true });
+    return localTargetDir;
 }
 
 function createOutputFolders({ inTargetDir }) {
@@ -129,8 +127,7 @@ export function generateStudio({ inTitle, inFolderName, inPanes }) {
     const localTitle = inTitle;
     const localFolderName = inFolderName;
     const localPanes = inPanes;
-    const localOutputFolder = createOutputFolder({ inFolderName: localFolderName });
-    const localTargetDir = localOutputFolder.targetDir;
+    const localTargetDir = createOutputFolder({ inFolderName: localFolderName });
     const localOutputFolders = createOutputFolders({ inTargetDir: localTargetDir });
     const localUiPaneConfigs = prepareUiPaneConfigs({ inPanes: localPanes });
     const localDataFiles = collectPaneDataFiles({ inPanes: localPanes });
@@ -146,12 +143,8 @@ export function generateStudio({ inTitle, inFolderName, inPanes }) {
         inJsDir: localOutputFolders.jsDir
     });
 
-    const localFolderAlreadyExisted = localOutputFolder.folderAlreadyExisted;
     return {
         folderPath: localTargetDir,
-        folderAlreadyExisted: localFolderAlreadyExisted,
-        message: localFolderAlreadyExisted
-            ? 'Output folder already existed; generated files were refreshed.'
-            : 'Output folder was created and generated files were written.'
+        message: 'Output folder was created and generated files were written.'
     };
 }
