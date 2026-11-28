@@ -77,13 +77,11 @@ function preparePaneRuntimeConfigs({ inPanes }) {
             paneNumber: localPaneConfig.paneNumber,
             key: localPaneConfig.key,
             label: localPaneConfig.label,
-            fileName: localBodyConfig.fileName,
             fetchUrl: localBodyConfig.fetchUrl,
             headerType: localHeaderConfig.type,
             selectOptions: (localHeaderConfig.options ?? []).map((option) => ({
                 label: option.label,
                 value: option.value,
-                fileName: option.fileName,
                 fetchUrl: option.fetchUrl
             })),
             bodyType: localBodyConfig.type,
@@ -98,10 +96,11 @@ function writePaneDataFiles({ inDataFiles, inDataDir }) {
     const localDataDir = inDataDir;
 
     localDataFiles.forEach((inDataFileConfig) => {
-        const localFileName = inDataFileConfig.fileName;
+        const localFetchUrl = inDataFileConfig.fetchUrl;
+        const localDataFileName = path.posix.basename(localFetchUrl);
         const localContentText = inDataFileConfig.contentText;
         fs.writeFileSync(
-            path.join(localDataDir, localFileName),
+            path.join(localDataDir, localDataFileName),
             `${localContentText}\n`,
             'utf8'
         );

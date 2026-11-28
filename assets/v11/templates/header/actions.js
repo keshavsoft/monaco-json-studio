@@ -27,14 +27,12 @@ export const actions = {
         const file = matchElement.files?.[0];
         if (!file) return;
 
-        const fileName = byId(`fileName${pane.paneNumber}`);
         const reader = new FileReader();
         reader.onload = () => {
             const value = pretty(String(reader.result ?? ''));
             editor.setValue(value);
-            if (fileName) fileName.textContent = file.name;
             state.contents[pane.paneNumber - 1] = value;
-            setStatus(`Loaded: ${file.name}`);
+            setStatus('Loaded selected file');
         };
         reader.readAsText(file);
     },
@@ -46,10 +44,10 @@ export const actions = {
         const option = pane.selectOptions.find((item) => item.value === matchElement.value);
         if (!option) return;
 
-        const fileName = byId(`fileName${pane.paneNumber}`);
+        const fetchUrlLabel = byId(`fetchUrl${pane.paneNumber}`);
         const value = await loadInitialValue(option.fetchUrl);
         editor.setValue(value);
-        if (fileName) fileName.textContent = option.fileName;
+        if (fetchUrlLabel) fetchUrlLabel.textContent = option.fetchUrl;
         state.contents[pane.paneNumber - 1] = value;
         setStatus(`Loaded: ${option.label}`);
     }

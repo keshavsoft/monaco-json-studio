@@ -1,17 +1,17 @@
 import { renderTemplate } from '../internal/templateEngine.js';
 
-export function buildPaneHeader({ inHeaderConfig, inPaneLabel, inFileName }) {
+export function buildPaneHeader({ inHeaderConfig, inPaneLabel, inFetchUrl }) {
     const localHeaderConfig = inHeaderConfig;
     const localPaneLabel = inPaneLabel;
-    const localFileName = inFileName;
+    const localFetchUrl = inFetchUrl;
     if (localHeaderConfig.type === 'none') return '';
 
     return renderTemplate(`header/${localHeaderConfig.type}.hbs`, {
         label: localPaneLabel,
-        fileName: localFileName,
+        fetchUrl: localFetchUrl,
         fileBtnId: localHeaderConfig.fileBtnId,
         fileInputId: localHeaderConfig.fileInputId,
-        fileNameId: localHeaderConfig.fileNameId,
+        fetchUrlId: localHeaderConfig.fetchUrlId,
         selectId: localHeaderConfig.selectId,
         options: localHeaderConfig.options ?? []
     });

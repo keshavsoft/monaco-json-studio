@@ -36,7 +36,7 @@ const outputDir = createStudio({
             body: {
                 type: 'monaco',
                 language: 'json',
-                fileName: 'rules.json',
+                fetchUrl: './data/rules.json',
                 content: {
                     include: ['id', 'total'],
                     currency: 'USD'
@@ -51,7 +51,7 @@ const outputDir = createStudio({
             body: {
                 type: 'monaco',
                 language: 'json',
-                fileName: 'result.json',
+                fetchUrl: './data/result.json',
                 content: {
                     id: 101,
                     total: 24.5,

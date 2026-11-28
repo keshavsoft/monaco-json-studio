@@ -15,15 +15,11 @@ const outputDir = createStudio({
             body: {
                 type: 'monaco',
                 language: 'json',
-                fileName: 'https://keshavsoft.github.io/declarative-definitions/json/v6/definitions.json',
-                content: {
-                    customer: 'Asha',
-                    items: ['notebook', 'pen']
-                }
+                fetchUrl: 'https://keshavsoft.github.io/declarative-definitions/json/v6/definitions.json'
             },
             footer: { type: 'note', text: 'Original order' }
         }
     ]
 });
 
-console.log(`Generated two-pane sample: ${outputDir}`);
+console.log(`Generated single-pane sample: ${outputDir}`);

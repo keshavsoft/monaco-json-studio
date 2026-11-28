@@ -1,4 +1,4 @@
-import { jsonText, normalizeDataLocation, requireObject, requireText } from './validators.js';
+import { jsonText, requireFetchUrl, requireObject, requireText } from './validators.js';
 
 export const BODY_TYPES = new Set(['monaco']);
 
@@ -15,9 +15,9 @@ export function normalizeBody({ inRawBody, inPaneKey, inPaneNumber, inSelectedOp
     }
 
     const localLanguage = requireText(localBodyConfig.language, `${localLocation}.language`, 'json');
-    const localDataLocation = normalizeDataLocation(
-        localBodyConfig.fileName ?? localSelectedOption?.fileName ?? `${localPaneKey}.json`,
-        `${localLocation}.fileName`
+    const localFetchUrl = requireFetchUrl(
+        localBodyConfig.fetchUrl ?? localSelectedOption?.fetchUrl ?? `./data/${localPaneKey}.json`,
+        `${localLocation}.fetchUrl`
     );
     const localContentText = jsonText(
         localBodyConfig.content ?? (localSelectedOption ? JSON.parse(localSelectedOption.contentText) : {}),
@@ -28,7 +28,7 @@ export function normalizeBody({ inRawBody, inPaneKey, inPaneNumber, inSelectedOp
         type: localType,
         language: localLanguage,
         editorId: `editor${localPaneNumber}`,
-        ...localDataLocation,
+        fetchUrl: localFetchUrl,
         contentText: localContentText
     };
 }

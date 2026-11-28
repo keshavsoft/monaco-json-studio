@@ -1,6 +1,6 @@
 {
   "name": "monaco-json-studio",
-  "version": "1.9.1",
+  "version": "1.11.1",
   "description": "Generate a static Monaco JSON Studio with configurable pane headers, bodies, and footers.",
   "publishConfig": {
     "access": "public"
@@ -32,7 +32,7 @@
     "dev:v6": "vite preview-v6/monaco-studio",
     "demo:v7": "node examples/npm-v7/generate-variations.mjs",
     "dev:v7": "vite preview-v7 --host 127.0.0.1 --port 5177",
-    "sample:1": "node samples/one-pane/generate.mjs",
+    "sample:1": "node samples/single-pane/generate.mjs",
     "sample:2": "node samples/two-panes/generate.mjs",
     "sample:3": "node samples/three-panes/generate.mjs",
     "samples": "npm run sample:1 && npm run sample:2 && npm run sample:3"

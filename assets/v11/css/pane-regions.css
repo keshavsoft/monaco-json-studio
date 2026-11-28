@@ -57,7 +57,7 @@
     background: rgba(255, 255, 255, .04);
 }
 .pane-file-pill i { color: var(--accent-amber); }
-.pane-file-name { overflow: hidden; color: var(--text-primary); font: 11px var(--font-mono); text-overflow: ellipsis; }
+.pane-fetch-url { overflow: hidden; color: var(--text-primary); font: 11px var(--font-mono); text-overflow: ellipsis; }
 
 .pane-body--monaco { flex: 1 1 auto; }
 .pane-footer {

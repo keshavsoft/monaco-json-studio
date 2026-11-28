@@ -1,5 +1,3 @@
-import path from 'node:path';
-
 export function requireObject(value, location) {
     if (!value || typeof value !== 'object' || Array.isArray(value)) {
         throw new TypeError(`${location} must be an object.`);
@@ -25,30 +23,10 @@ export function jsonText(value, location) {
     }
 }
 
-export function validateFileName(fileName, location) {
-    const result = requireText(fileName, location, undefined);
-    if (path.basename(result) !== result || !/^[A-Za-z0-9][A-Za-z0-9._-]*\.json$/i.test(result)) {
-        throw new TypeError(`${location} must be a plain .json file name without a directory path.`);
-    }
-    return result;
+export function requireFetchUrl(value, location, fallback) {
+    return requireText(value, location, fallback);
 }
 
-export function normalizeDataLocation(value, location, fallback) {
-    const localDataLocation = requireText(value, location, fallback);
-    const hasExplicitPath = /[\\/]/.test(localDataLocation);
-
-    if (hasExplicitPath) {
-        return {
-            fileName: localDataLocation,
-            fetchUrl: localDataLocation,
-            writeToDataDir: false
-        };
-    }
-
-    const localFileName = validateFileName(localDataLocation, location);
-    return {
-        fileName: localFileName,
-        fetchUrl: `./data/${encodeURIComponent(localFileName)}`,
-        writeToDataDir: true
-    };
+export function isGeneratedDataFetchUrl(fetchUrl) {
+    return /^\.\/data\/[A-Za-z0-9][A-Za-z0-9._-]*\.json$/i.test(fetchUrl);
 }

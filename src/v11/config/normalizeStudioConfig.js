@@ -1,4 +1,4 @@
-import { requireObject, requireText } from './validators.js';
+import { isGeneratedDataFetchUrl, requireObject, requireText } from './validators.js';
 import { normalizeHeader } from './normalizeHeader.js';
 import { normalizeBody } from './normalizeBody.js';
 import { normalizeFooter } from './normalizeFooter.js';
@@ -52,10 +52,10 @@ export function normalizeStudioConfig(inRawConfig) {
         });
         const localDataFiles = localHeaderConfig.type === 'select'
             ? localHeaderConfig.options
-                .filter((option) => option.writeToDataDir)
-                .map((option) => ({ fileName: option.fileName, contentText: option.contentText }))
-            : localBodyConfig.writeToDataDir
-                ? [{ fileName: localBodyConfig.fileName, contentText: localBodyConfig.contentText }]
+                .filter((option) => isGeneratedDataFetchUrl(option.fetchUrl))
+                .map((option) => ({ fetchUrl: option.fetchUrl, contentText: option.contentText }))
+            : isGeneratedDataFetchUrl(localBodyConfig.fetchUrl)
+                ? [{ fetchUrl: localBodyConfig.fetchUrl, contentText: localBodyConfig.contentText }]
                 : [];
 
         return {

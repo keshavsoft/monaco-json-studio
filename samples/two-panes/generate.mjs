@@ -15,7 +15,7 @@ const outputDir = createStudio({
             body: {
                 type: 'monaco',
                 language: 'json',
-                fileName: 'input.json',
+                fetchUrl: './data/input.json',
                 content: {
                     customer: 'Asha',
                     items: ['notebook', 'pen']
@@ -30,7 +30,7 @@ const outputDir = createStudio({
             body: {
                 type: 'monaco',
                 language: 'json',
-                fileName: 'output.json',
+                fetchUrl: './data/output.json',
                 content: {
                     customer: 'Asha',
                     itemCount: 2,

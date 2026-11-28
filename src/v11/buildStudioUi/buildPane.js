@@ -21,7 +21,7 @@ export function buildPane({
     const localHeaderHtml = buildPaneHeader({
         inHeaderConfig: localPaneHeaderConfig,
         inPaneLabel: localPaneLabel,
-        inFileName: localPaneBodyConfig.fileName
+        inFetchUrl: localPaneBodyConfig.fetchUrl
     });
     const localBodyHtml = buildPaneBody({ inBodyConfig: localPaneBodyConfig });
     const localFooterHtml = buildPaneFooter({ inFooterConfig: localPaneFooterConfig });

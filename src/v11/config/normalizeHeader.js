@@ -1,4 +1,4 @@
-import { jsonText, normalizeDataLocation, requireObject, requireText } from './validators.js';
+import { jsonText, requireFetchUrl, requireObject, requireText } from './validators.js';
 
 export const HEADER_TYPES = new Set(['file-picker', 'title', 'select', 'none']);
 const selectValuePattern = /^[A-Za-z0-9][A-Za-z0-9_-]*$/;
@@ -27,15 +27,15 @@ function normalizeSelectOptions({ inOptions, inPaneKey, inLocation }) {
         }
         localUsedValues.add(localValue);
 
-        const localDataLocation = normalizeDataLocation(
-            localOption.fileName ?? `${localPaneKey}-${localValue}.json`,
-            `${localOptionLocation}.fileName`
+        const localFetchUrl = requireFetchUrl(
+            localOption.fetchUrl ?? `./data/${localPaneKey}-${localValue}.json`,
+            `${localOptionLocation}.fetchUrl`
         );
         const localContentText = jsonText(localOption.content ?? {}, `${localOptionLocation}.content`);
         return {
             label: localLabel,
             value: localValue,
-            ...localDataLocation,
+            fetchUrl: localFetchUrl,
             contentText: localContentText
         };
     });
@@ -58,7 +58,7 @@ export function normalizeHeader({ inRawHeader, inPaneKey, inPaneNumber, inLocati
         type: localType,
         fileBtnId: `openFileBtn${localPaneNumber}`,
         fileInputId: `fileInput${localPaneNumber}`,
-        fileNameId: `fileName${localPaneNumber}`,
+        fetchUrlId: `fetchUrl${localPaneNumber}`,
         selectId: `paneSelect${localPaneNumber}`
     };
 
