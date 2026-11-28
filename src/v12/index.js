@@ -1,6 +1,6 @@
 import { validatePaneCount, validateFolderName } from './validateInputs/index.js';
 import { createPanes } from './createPanes/index.js';
-import { generateStudio } from './generateStudio/index.js';
+import { generateStudio } from 'monaco-json-studio-base/v1';
 
 export function createStudio(inPaneCount = 1, inFolderName = './monaco-studio') {
     const localPaneCount = validatePaneCount(inPaneCount);

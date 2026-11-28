@@ -45,4 +45,6 @@ V12 follows the work in order:
 4. `buildStudioUi/` builds the studio header, pane workspace, and footer.
 5. `wireStudioJavaScript/` writes pane runtime state and copies browser code; V12 styles are copied alongside it.
 
-The matching V12 implementation and browser assets live in `src/v12/` and `assets/v12/`.
+V12 keeps its product inputs and pane defaults in `src/v12/`. The shared page builder, output folder guard, templates, and browser assets are provided by `monaco-json-studio-base/v1`.
+
+During local development this repository consumes the sibling base repository through a `file:` dependency. Publish the base package and replace that local dependency before publishing this package.

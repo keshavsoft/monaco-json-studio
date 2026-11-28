@@ -1,6 +1,6 @@
 {
   "name": "monaco-json-studio",
-  "version": "1.12.1",
+  "version": "1.12.2",
   "description": "Generate a static Monaco Studio from a pane count and output folder.",
   "publishConfig": {
     "access": "public"
@@ -24,7 +24,6 @@
     "src/index.js",
     "src/v12",
     "bin",
-    "assets/v12",
     "README.md",
     "LICENSE"
   ],
@@ -48,7 +47,7 @@
   "author": "KeshavSoft",
   "license": "MIT",
   "dependencies": {
-    "handlebars": "^4.7.10"
+    "monaco-json-studio-base": "file:../monaco-json-studio-base"
   },
   "devDependencies": {}
 }
