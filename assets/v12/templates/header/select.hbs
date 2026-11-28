@@ -1,0 +1,16 @@
+<header class="pane-region pane-header pane-header--select" data-region="header" data-type="select">
+    <div class="pane-header__left">
+        <label class="pane-label" for="{{selectId}}">{{label}}</label>
+        <select id="{{selectId}}" class="pane-select" aria-label="{{label}}">
+            {{#each options}}
+            <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div class="pane-header__right">
+        <span class="pane-file-pill">
+            <i class="bi bi-filetype-json" aria-hidden="true"></i>
+            <span id="{{fetchUrlId}}" class="pane-fetch-url">{{fetchUrl}}</span>
+        </span>
+    </div>
+</header>

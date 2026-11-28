@@ -1,25 +1,12 @@
-# Local V9 samples
+# Local V12 samples
 
-These examples import the checkout's current package entry point, so they run V10 directly without publishing or installing a new package version.
+Each sample calls `createStudio(paneCount, folderName)` through the repository entry point.
 
-From the repository root, install the locked dependencies once:
+From the repository root, install dependencies once and generate all three samples:
 
 ```bash
 npm ci
-```
-
-Run one sample from the repository root:
-
-```bash
-npm run sample:1
-npm run sample:2
-npm run sample:3
-```
-
-Generate all three:
-
-```bash
 npm run samples
 ```
 
-Each command writes a static studio into that sample's `generated/` folder. Open its `index.html` through a local static web server to use Monaco and the sample data.
+Run one sample with `npm run sample:1`, `npm run sample:2`, or `npm run sample:3`. Each writes to its own `generated/` folder. Existing folders are reused and refreshed.

@@ -4,22 +4,6 @@ import { createStudio } from '../../src/index.js';
 
 const sampleDir = path.dirname(fileURLToPath(import.meta.url));
 
-const outputDir = createStudio({
-    title: 'Input and Output Studio',
-    outputDir: path.join(sampleDir, 'generated'),
-    panes: [
-        {
-            key: 'input',
-            label: 'Input',
-            header: { type: 'file-picker' },
-            body: {
-                type: 'monaco',
-                language: 'json',
-                fetchUrl: 'https://keshavsoft.github.io/declarative-definitions/json/v6/definitions.json'
-            },
-            footer: { type: 'note', text: 'Original order' }
-        }
-    ]
-});
+const generationResult = createStudio(1, path.join(sampleDir, 'generated'));
 
-console.log(`Generated single-pane sample: ${outputDir}`);
+console.log(`${generationResult.message} ${generationResult.folderPath}`);

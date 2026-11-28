@@ -4,42 +4,6 @@ import { createStudio } from '../../src/index.js';
 
 const sampleDir = path.dirname(fileURLToPath(import.meta.url));
 
-const outputDir = createStudio({
-    title: 'Input and Output Studio',
-    outputDir: path.join(sampleDir, 'generated'),
-    panes: [
-        {
-            key: 'input',
-            label: 'Input',
-            header: { type: 'file-picker' },
-            body: {
-                type: 'monaco',
-                language: 'json',
-                fetchUrl: './data/input.json',
-                content: {
-                    customer: 'Asha',
-                    items: ['notebook', 'pen']
-                }
-            },
-            footer: { type: 'note', text: 'Original order' }
-        },
-        {
-            key: 'output',
-            label: 'Output',
-            header: { type: 'title' },
-            body: {
-                type: 'monaco',
-                language: 'json',
-                fetchUrl: './data/output.json',
-                content: {
-                    customer: 'Asha',
-                    itemCount: 2,
-                    status: 'ready'
-                }
-            },
-            footer: { type: 'cursor' }
-        }
-    ]
-});
+const generationResult = createStudio(2, path.join(sampleDir, 'generated'));
 
-console.log(`Generated two-pane sample: ${outputDir}`);
+console.log(`${generationResult.message} ${generationResult.folderPath}`);
