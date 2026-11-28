@@ -5,7 +5,7 @@ const args = process.argv.slice(2);
 
 function showHelp() {
     console.log(`
-Monaco JSON Studio v8
+Monaco JSON Studio v9
 
 Create a static studio by pane count or by specifying <header> <body> <footer>:
 
@@ -79,7 +79,7 @@ try {
         outputDir: './monaco-studio',
         panes
     });
-    console.log(`Generated Monaco Studio v8 (${paneCount} pane${paneCount === 1 ? '' : 's'}: ${headerType} / ${bodyType} / ${footerType}).`);
+    console.log(`Generated Monaco Studio v9 (${paneCount} pane${paneCount === 1 ? '' : 's'}: ${headerType} / ${bodyType} / ${footerType}).`);
     console.log(`Open: ${targetDir}/index.html`);
 } catch (error) {
     console.error(`Could not generate Monaco Studio: ${error.message}`);
