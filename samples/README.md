@@ -1,6 +1,6 @@
 # Local V9 samples
 
-These examples import the checkout's current package entry point, so they run V9 directly without publishing or installing a new package version.
+These examples import the checkout's current package entry point, so they run V10 directly without publishing or installing a new package version.
 
 From the repository root, install the locked dependencies once:
 

@@ -6,7 +6,7 @@ import { buildPaneFooter } from './buildPaneFooter.js';
 export function buildPane(pane) {
     const header = buildPaneHeader(pane);
     const body = buildPaneBody(pane);
-    const footer = buildPaneFooter(pane);
+    const footer = buildPaneFooter(pane.footer);
 
     return renderTemplate('pane.hbs', {
         paneNumber: pane.paneNumber,

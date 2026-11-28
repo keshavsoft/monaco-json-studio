@@ -1,7 +1,6 @@
 import { renderTemplate } from '../internal/templateEngine.js';
 
-export function buildPaneFooter(pane) {
-    const { footer } = pane;
+export function buildPaneFooter(footer) {
     if (footer.type === 'none') return '';
 
     return renderTemplate(`footer/${footer.type}.hbs`, {
